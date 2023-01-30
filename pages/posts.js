@@ -1,12 +1,14 @@
 import Head from "next/head";   
 import Link from "next/link";
 import Layout from "../components/Layout";
+import Footer from "../components/Footer";
+
+
 export default function Posts() {
 
   return (
     <>
        <Layout>
-
       
       
      <Head>
@@ -55,9 +57,9 @@ export default function Posts() {
         />
       </Head>
     
-     
+      
     
-          <div class="content">
+          <div style={{marginRight: 0}}class="content ">
             <div class="pb-9">
               <div class="row gy-3 gx-5 gx-xxl-6">
                 <div class="col-12 order-0">
@@ -696,25 +698,8 @@ export default function Posts() {
                 </div>
               </div>
             </div>
-            <footer class="footer position-absolute">
-              <div class="row g-0 justify-content-between align-items-center h-100">
-                <div class="col-12 col-sm-auto text-center">
-                  <p class="mb-0 mt-2 mt-sm-0 text-900">
-                    Thank you for visiting CliCa
-                    <span class="d-none d-sm-inline-block"></span>
-                    <span class="d-none d-sm-inline-block mx-1">|</span>
-                    <br class="d-sm-none" />
-                    2023 &copy;
-                    <a class="mx-1" href="https://themewagon.com">
-                      Themewagon
-                    </a>
-                  </p>
-                </div>
-                <div class="col-12 col-sm-auto text-center">
-                  <p class="mb-0 text-600">v1.8.0</p>
-                </div>
-              </div>
-            </footer>
+            <Footer />
+            
           </div>
       
         </Layout>

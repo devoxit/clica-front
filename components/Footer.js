@@ -6,11 +6,11 @@ import Navbar from "./Navbar";
 
 
 
-const Layout = ({ children }) => {
+
+const Footer = () => {
   return (
     <>
-      <Head>
-
+         <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -51,20 +51,28 @@ const Layout = ({ children }) => {
           id="user-style-default"
         />
       </Head>
-
-      <main class="main" id="top">
-        <div class="container-fluid px-0">
-        
-          <Sidebar />
-          <Navbar />
-          {children}
-         
-       
-         
-        </div>
-      </main>
+<footer class="footer position-absolute">
+              <div class="row g-0 justify-content-between align-items-center h-100">
+                <div class="col-12 col-sm-auto text-center">
+                  <p class="mb-0 mt-2 mt-sm-0 text-900">
+                    Thank you for visiting CliCa Website
+                    <span class="d-none d-sm-inline-block"></span>
+                    <span class="d-none d-sm-inline-block mx-1">|</span>
+                    <br class="d-sm-none" />
+                    2023 &copy;
+                    <a class="mx-1" href="https://clica.com">
+                      CliCa
+                    </a>
+                  </p>
+                </div>
+                <div class="col-12 col-sm-auto text-center">
+                  <p class="mb-0 text-600">v1.0.0</p>
+                </div>
+              </div>
+            </footer>
+     
     </>
   );
 };
 
-export default Layout;
+export default Footer;

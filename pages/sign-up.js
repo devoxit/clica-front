@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Router from "next/router";
-import axios from "axios";
+import { Http } from "@/webservice/http.module";
+
 import Head from "next/head";
 import Link from "next/link";
 //import { ProgressBar } from "react-step-progress-bar";
@@ -9,6 +10,13 @@ import { Row, Col, Button } from "react-bootstrap";
 import { MultiStepProgressBar } from "../components/StepsComponents/MultiStepProgressBar";
 // import { MultiStepForm } from "../components/StepsComponents/MultiStepForm";
 // import { steps } from "../utils/steps";
+
+const http = new Http("13.208.124.247:8080/api/v1/signup", false)
+const errors = ["Error sending phone number",
+  "Error verifying phone number",
+  "Error send email",
+  "Error verifying email",
+  "Error submitting data"]
 
 export default function Signup() {
   const [isLoading, setLoading] = useState(false);
@@ -21,108 +29,61 @@ export default function Signup() {
   const [success, setSuccess] = useState("");
 
   const [error, setError] = useState("");
- 
-  const api = "http://13.208.124.247:8080/api/v1/signup";
-  console.log("success", success,"loading",isLoading);
+
+  console.log("success", success, "loading", isLoading);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      switch (step) {
+        case 1:
+          var response = await http.request("post", `/send/phone`, {
+            subject: phone,
+          });
+          var result = response.data;
+          setSuccess(result.success);
 
-    if (step === 1) {
-      try {
-        const response = await axios.post(`${api}/send/phone`, {
-          subject: phone,
-        });
-        const result = response.data;
-        setSuccess(result.success);
-        const token = response.headers.rg_t;
-        console.log(token);
-        localStorage.setItem("token", token);
-        setStep(2);
-      } catch (err) {
-        setError("Error sending phone number");
-      }
-    }
+          setStep(2);
+          break
 
-    if (step === 2) {
-      try {
-        const response = await axios.post(`${api}/verify/phone`,{
-          headers: {
-          "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
-          },
-          body: JSON.stringify({ code: phoneCode, }),
-        }
-        );
-        const result = response.data;
-        setSuccess(result.success);
-        const token = response.headers.rg_t;
-        console.log(token);
-        localStorage.setItem("token", token);
-        setStep(3);
-      } catch (err) {
-        setError("Error verifying phone number");
+        case 2:
+          var response = await http.request("post", `/verify/phone`, {
+            code: phoneCode,
+          });
+          var result = response.data;
+          setSuccess(result.success);
+
+          setStep(3);
+          break
+
+        case 3:
+          var response = await http.request("post", `/send/email`, { subject: email });
+          var result = response.data;
+          setSuccess(result.success);
+
+          setStep(4);
+          break
+        case 4:
+          var response = await http.request("post", `/verify/email`, { code: emailCode });
+          var result = response.data;
+          setSuccess(result.success);
+
+          setStep(5);
+          break
+
+        case 5:
+          var response = await http.request("post", `/`, { secret: password });
+          var result = response.data;
+          setSuccess(result.success);
+          localStorage.removeItem("rg_t");
+          setStep(6);
+          break
       }
+    } catch (err) {
+      // console.log(err)
+      setError(errors[step - 1]);
     }
-    if (step === 3) {
-      try {
-        const response = await axios.post(`${api}/send/email`,{
-          headers: {
-          "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
-          },
-          body: JSON.stringify({ subject: email }),
-        }
-        );
-        const result = response.data;
-        setSuccess(result.success);
-        const token = response.headers.rg_t;
-        console.log(token);
-        localStorage.setItem("token", token);
-        setStep(4);
-      } catch (err) {
-        setError("Error send email");
-      }
-    }
-    if (step === 4) {
-      try {
-        const response = await axios.post(`${api}/verify/email`,{
-          headers: {
-          "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
-          },
-          body: JSON.stringify({ code: emailCode }),
-        }
-        );
-        const result = response.data;
-        setSuccess(result.success);
-        const token = response.headers.rg_t;
-        console.log(token);
-        localStorage.setItem("token", token);
-        setStep(5);
-      } catch (err) {
-        setError("Error verifying email");
-      }
-    }
-    if (step === 5) {
-      try {
-        const response = await axios.post(api,{
-          headers: {
-          "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
-          },
-          body: JSON.stringify({ secret: password }),
-        }
-        );
-        const result = response.data;
-        setSuccess(result.success);
-        localStorage.removeItem("token");
-        setStep(6);
-      } catch (err) {
-        setError("Error submitting data");
-      }
-    }
-};
+  };
 
   return (
     <>
@@ -201,77 +162,77 @@ export default function Signup() {
                   <hr className="bg-200" />
                 </div>
 
-               <div>
+                <div>
                   {step === 1 && (
                     <div class="col-md-12">
-                    
-                    <form onSubmit={handleSubmit}>
-                     
-                      
-                     
-            <label class="form-label" htmlFor="code">
-              {/* {item.label} */} Enter You Phone Number            </label>
-            <input
-              class="form-control form-icon-input"
-             
-              type="text"
-                        placeholder="Phone number"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                       
-            />
-            
 
-            <Button
-          type="submit"
-          className="w-100 mt-3 button__next"
-          disabled={phone===""}
-        >
-         Send Phone
-        </Button>
-                      
-                     
-                    </form>
-          </div>
+                      <form onSubmit={handleSubmit}>
+
+
+
+                        <label class="form-label" htmlFor="code">
+                          {/* {item.label} */} Enter You Phone Number            </label>
+                        <input
+                          class="form-control form-icon-input"
+
+                          type="text"
+                          placeholder="Phone number"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+
+                        />
+
+
+                        <Button
+                          type="submit"
+                          className="w-100 mt-3 button__next"
+                          disabled={phone === ""}
+                        >
+                          Send Phone
+                        </Button>
+
+
+                      </form>
+                    </div>
                   )}
                   {step === 2 && (
 
 
 
                     <div class="col-md-12">
-                    
-                    <form onSubmit={handleSubmit}>
-                     
-                      
-                     
-            <label class="form-label" htmlFor="code">
-              {/* {item.label} */} Enter The code In Your SMS          </label>
-            <input
-              class="form-control form-icon-input"
-             
-              type="text"
-                        placeholder="Phone code"
-                        value={phoneCode}
-                        onChange={(e) => setPhoneCode(e.target.value)}
-                       
-            />
-            
 
-            <Button
-          type="submit"
-          className="w-100 mt-3"
-          disabled={phoneCode===""}
-        >
-          Verify Phone
-        </Button>
-                      
-                     
-                    </form>
-          </div>
+                      <form onSubmit={handleSubmit}>
 
 
 
-                    
+                        <label class="form-label" htmlFor="code">
+                          {/* {item.label} */} Enter The code In Your SMS          </label>
+                        <input
+                          class="form-control form-icon-input"
+
+                          type="text"
+                          placeholder="Phone code"
+                          value={phoneCode}
+                          onChange={(e) => setPhoneCode(e.target.value)}
+
+                        />
+
+
+                        <Button
+                          type="submit"
+                          className="w-100 mt-3"
+                          disabled={phoneCode === ""}
+                        >
+                          Verify Phone
+                        </Button>
+
+
+                      </form>
+                    </div>
+
+
+
+
                   )}
                   {step === 3 && (
                     <form onSubmit={handleSubmit}>
@@ -411,7 +372,7 @@ export default function Signup() {
           href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap"
           rel="stylesheet"
         />
-
+   
         <link
           rel="stylesheet"
           href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
@@ -458,12 +419,12 @@ export default function Signup() {
                     />
                   </div>
                 </Link>
-
+   
                 <div className="text-center mb-7">
                   <h3 className="text-1000">サインアップ</h3>
                   <p className="text-700">今すぐアカウントを作成してください</p>
                 </div>
-
+   
                 <div className="position-relative mt-4">
                   <hr className="bg-200" />
                 </div>

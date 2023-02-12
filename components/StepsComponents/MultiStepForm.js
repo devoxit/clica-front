@@ -1,22 +1,23 @@
 import { useState, useEffect } from "react";
 import { FormItem } from "./FormItem";
 
-export const MultiStepForm = (props) => {
+export const MultiStepForm = ({ list, step, onPageUpdate, pagesAnswers }) => {
   // store index number with the answers?
-  const [answers, setAnswers] = useState({ index: props.step });
+  const [answers, setAnswers] = useState({ index: step });
+  console.log("mutistepfrom", answers);
 
   useEffect(() => {
     // check if the answers isn't empty
     if (Object.keys(answers).length > 1) {
       // update page answers
-      props.onPageUpdate(answers.index, answers);
+      onPageUpdate(answers.step, answers);
       // update page number locally
-      setAnswers({ index: props.step });
+      setAnswers({  step:step });
     } else {
       // update page number locally
-      setAnswers({ index: props.step });
+      setAnswers({  step:step });
     }
-  }, [props.step]);
+  },[step]);
 
   const updateAnswers = (value, category) => {
     setAnswers({ ...answers, [category]: value });
@@ -24,17 +25,13 @@ export const MultiStepForm = (props) => {
 
   return (
     <div className="text-left">
-      {props.list[props.step - 1].items?.map((item, index) => {
+      {list[step - 1].items?.map((item, index) => {
         return (
           <FormItem
             key={`${index}_${item.label}`}
             item={item}
             onChange={updateAnswers}
-            answer={
-              props.pagesAnswers[props.step]
-                ? props.pagesAnswers[props.step][item.value]
-                : null
-            }
+            answer={pagesAnswers[step] ? pagesAnswers[step][item.value] : null}
           />
         );
       })}

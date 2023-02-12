@@ -67,17 +67,10 @@ export default function Signin() {
                   <h3 class="text-1000">サインイン</h3>
                   <p class="text-700">Get access to your account</p>
                 </div>
-                <button class="btn btn-phoenix-secondary w-100 mb-3">
-                  <span class="fab fa-google text-danger me-2 fs--1"></span>Sign
-                  in with google
-                </button>
-                <button class="btn btn-phoenix-secondary w-100">
-                  <span class="fab fa-facebook text-primary me-2 fs--1"></span>
-                  Sign in with facebook
-                </button>
+
                 <div class="position-relative">
                   <hr class="bg-200 mt-5 mb-4" />
-                  <div class="divider-content-center">or use email</div>
+                  <div class="divider-content-center"></div>
                 </div>
                 <div class="mb-3 text-start">
                   <label class="form-label" for="email">
@@ -108,7 +101,7 @@ export default function Signin() {
                   </div>
                 </div>
                 <div class="row flex-between-center mb-7">
-                  <div class="col-auto">
+                  {/* <div class="col-auto">
                     <div class="form-check mb-0">
                       <input
                         class="form-check-input"
@@ -120,7 +113,7 @@ export default function Signin() {
                         Remember me
                       </label>
                     </div>
-                  </div>
+                  </div> */}
                   <div class="col-auto">
                     <Link class="fs--1 fw-bold" href="/forgot-password">
                       Forgot Password?

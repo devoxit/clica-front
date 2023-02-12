@@ -1,43 +1,128 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import Router from "next/router";
+import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
-import Script from "next/script";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+//import { ProgressBar } from "react-step-progress-bar";
+// import Script from "next/script";
+import { Row, Col, Button } from "react-bootstrap";
 import { MultiStepProgressBar } from "../components/StepsComponents/MultiStepProgressBar";
-import { MultiStepForm } from "../components/StepsComponents/MultiStepForm";
-import { steps } from "../utils/steps";
+// import { MultiStepForm } from "../components/StepsComponents/MultiStepForm";
+// import { steps } from "../utils/steps";
 
 export default function Signup() {
-  const [index, setIndex] = useState(1);
-  const [submitted, setSubmitted] = useState(false);
-  const totalPagesCount = steps?.length || 0;
-  // numbered by pages. for exampe { 1: [{"key" : "value"}], 2:["key": "value"], 3: []}
-  const [pagesAnswers, setPagesAnswers] = useState({});
+  const [isLoading, setLoading] = useState(false);
+  const [step, setStep] = useState(1);
+  const [phone, setPhone] = useState("");
+  const [phoneCode, setPhoneCode] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailCode, setEmailCode] = useState("");
+  const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const prevButton = () => {
-    if (index > 1) {
-      setIndex((prevIndex) => prevIndex - 1);
+  const [error, setError] = useState("");
+ 
+  const api = "http://13.208.124.247:8080/api/v1/signup";
+  console.log("success", success,"loading",isLoading);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (step === 1) {
+      try {
+        const response = await axios.post(`${api}/send/phone`, {
+          subject: phone,
+        });
+        const result = response.data;
+        setSuccess(result.success);
+        const token = response.headers.rg_t;
+        console.log(token);
+        localStorage.setItem("token", token);
+        setStep(2);
+      } catch (err) {
+        setError("Error sending phone number");
+      }
     }
-  };
 
-  const nextButton = () => {
-    if (index - 6) {
-      setIndex((prevIndex) => prevIndex + 1);
-    } else {
-      // clear the form on submit
-      setPagesAnswers({});
-      setSubmitted(true);
+    if (step === 2) {
+      try {
+        const response = await axios.post(`${api}/verify/phone`,{
+          headers: {
+          "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+          body: JSON.stringify({ code: phoneCode, }),
+        }
+        );
+        const result = response.data;
+        setSuccess(result.success);
+        const token = response.headers.rg_t;
+        console.log(token);
+        localStorage.setItem("token", token);
+        setStep(3);
+      } catch (err) {
+        setError("Error verifying phone number");
+      }
     }
-  };
-
-  const onPageAnswerUpdate = (step, answersObj) => {
-    setPagesAnswers({ ...pagesAnswers, [step]: answersObj });
-  };
-
-  const handleStart = () => {
-    setIndex(1);
-    setSubmitted(false);
-  };
+    if (step === 3) {
+      try {
+        const response = await axios.post(`${api}/send/email`,{
+          headers: {
+          "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+          body: JSON.stringify({ subject: email }),
+        }
+        );
+        const result = response.data;
+        setSuccess(result.success);
+        const token = response.headers.rg_t;
+        console.log(token);
+        localStorage.setItem("token", token);
+        setStep(4);
+      } catch (err) {
+        setError("Error send email");
+      }
+    }
+    if (step === 4) {
+      try {
+        const response = await axios.post(`${api}/verify/email`,{
+          headers: {
+          "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+          body: JSON.stringify({ code: emailCode }),
+        }
+        );
+        const result = response.data;
+        setSuccess(result.success);
+        const token = response.headers.rg_t;
+        console.log(token);
+        localStorage.setItem("token", token);
+        setStep(5);
+      } catch (err) {
+        setError("Error verifying email");
+      }
+    }
+    if (step === 5) {
+      try {
+        const response = await axios.post(api,{
+          headers: {
+          "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+          body: JSON.stringify({ secret: password }),
+        }
+        );
+        const result = response.data;
+        setSuccess(result.success);
+        localStorage.removeItem("token");
+        setStep(6);
+      } catch (err) {
+        setError("Error submitting data");
+      }
+    }
+};
 
   return (
     <>
@@ -83,16 +168,16 @@ export default function Signup() {
         />
       </Head>
 
-      <main class="main" id="top">
-        <div class="container-fluid px-0">
-          <div class="container">
-            <div class="row flex-center min-vh-100 py-5">
-              <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3">
+      <main className="main" id="top">
+        <div className="container-fluid px-0">
+          <div className="container">
+            <div className="row flex-center min-vh-100 py-5">
+              <div className="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3">
                 <Link
-                  class="d-flex flex-center text-decoration-none mb-4"
+                  className="d-flex flex-center text-decoration-none mb-4"
                   href="/"
                 >
-                  <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block">
+                  <div className="d-flex align-items-center fw-bolder fs-5 d-inline-block">
                     <img
                       src="assets/img/icons/logo.png"
                       alt="phoenix"
@@ -101,105 +186,129 @@ export default function Signup() {
                   </div>
                 </Link>
 
-                <div class="text-center mb-7">
-                  <h3 class="text-1000">サインアップ</h3>
-                  <p class="text-700">今すぐアカウントを作成してください</p>
+                <div className="text-center mb-7">
+                  <h3 className="text-1000">サインアップ</h3>
+                  <p className="text-700">今すぐアカウントを作成してください</p>
                 </div>
+
                 <Row className="m-5">
                   <Col className="align-self-center">
-                    <MultiStepProgressBar step={index} />
+                    <MultiStepProgressBar step={step} />
                   </Col>
                 </Row>
-                <div class="position-relative mt-4">
-                  <hr class="bg-200" />
+
+                <div className="position-relative mt-4">
+                  <hr className="bg-200" />
                 </div>
-                {submitted ? (
-                  <p className="text-center">
-                    Your have been successfuly registered!
-                  </p>
-                ) : (
-                  <form>
-                    <MultiStepForm
-                      list={steps}
-                      step={index}
-                      onPageUpdate={onPageAnswerUpdate}
-                      pagesAnswers={pagesAnswers}
-                    />
-                    <Button onClick={nextButton} className="w-100 mt-3">
-                      {index == totalPagesCount ? "Confirmed" : "Next"}
-                    </Button>
 
-                    {/* <div class="mb-3 text-start">
-                      <label class="form-label" for="name">
-                        Name
-                      </label>
+               <div>
+                  {step === 1 && (
+                    <div class="col-md-12">
+                    
+                    <form onSubmit={handleSubmit}>
+                     
+                      
+                     
+            <label class="form-label" htmlFor="code">
+              {/* {item.label} */} Enter You Phone Number            </label>
+            <input
+              class="form-control form-icon-input"
+             
+              type="text"
+                        placeholder="Phone number"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                       
+            />
+            
+
+            <Button
+          type="submit"
+          className="w-100 mt-3 button__next"
+          disabled={phone===""}
+        >
+         Send Phone
+        </Button>
+                      
+                     
+                    </form>
+          </div>
+                  )}
+                  {step === 2 && (
+
+
+
+                    <div class="col-md-12">
+                    
+                    <form onSubmit={handleSubmit}>
+                     
+                      
+                     
+            <label class="form-label" htmlFor="code">
+              {/* {item.label} */} Enter The code In Your SMS          </label>
+            <input
+              class="form-control form-icon-input"
+             
+              type="text"
+                        placeholder="Phone code"
+                        value={phoneCode}
+                        onChange={(e) => setPhoneCode(e.target.value)}
+                       
+            />
+            
+
+            <Button
+          type="submit"
+          className="w-100 mt-3"
+          disabled={phoneCode===""}
+        >
+          Verify Phone
+        </Button>
+                      
+                     
+                    </form>
+          </div>
+
+
+
+                    
+                  )}
+                  {step === 3 && (
+                    <form onSubmit={handleSubmit}>
                       <input
-                        class="form-control"
-                        id="name"
-                        type="text"
-                        placeholder="Name"
-                      />
-                    </div>
-                    <div class="mb-3 text-start">
-                      <label class="form-label" for="email">
-                        Email address
-                      </label>
-                      <input
-                        class="form-control"
-                        id="email"
                         type="email"
-                        placeholder="name@example.com"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
-                    </div>
-                    <div class="row g-3 mb-3">
-                      <div class="col-md-6">
-                        <label class="form-label" for="password">
-                          Password
-                        </label>
-                        <input
-                          class="form-control form-icon-input"
-                          id="password"
-                          type="password"
-                          placeholder="Password"
-                        />
-                      </div>
-                      <div class="col-md-6">
-                        <label class="form-label" for="confirmPassword">
-                          Confirm Password
-                        </label>
-                        <input
-                          class="form-control form-icon-input"
-                          id="confirmPassword"
-                          type="password"
-                          placeholder="Confirm Password"
-                        />
-                      </div>
-                    </div>
-                    <div class="form-check mb-3">
+                      <button type="submit">Next</button>
+                    </form>
+                  )}
+                  {step === 4 && (
+                    <form onSubmit={handleSubmit}>
                       <input
-                        class="form-check-input"
-                        id="termsService"
-                        type="checkbox"
+                        type="text"
+                        placeholder="Email code"
+                        value={emailCode}
+                        onChange={(e) => setEmailCode(e.target.value)}
                       />
-                      <label
-                        class="form-label fs--1 text-none"
-                        for="termsService"
-                      >
-                        I accept the <a href="#!">terms </a>and{" "}
-                        <a href="#!">privacy policy</a>
-                      </label>
-                    </div>
-                    <button class="btn btn-primary w-100 mb-3">
-                      サインアップ
-                    </button> */}
-
-                    {/* <div class="text-center">
-                      <Link class="fs--1 fw-bold" href="/sign-in">
-                        Sign in to an existing account
-                      </Link>
-                    </div> */}
-                  </form>
-                )}
+                      <button type="submit">Next</button>
+                    </form>
+                  )}
+                  {step === 5 && (
+                    <form onSubmit={handleSubmit}>
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                      <button type="submit">Sign up</button>
+                    </form>
+                  )}
+                  {step === 6 && <p>Signup successful!</p>}
+                  {error && <p style={{ color: "red" }}>{error}</p>}
+                </div>
               </div>
             </div>
           </div>
@@ -207,8 +316,89 @@ export default function Signup() {
       </main>
     </>
   );
+
   {
-    /* return (
+    // const [index, setIndex] = useState(1);
+    // const [submitted, setSubmitted] = useState(false);
+    // const totalPagesCount = steps?.length || 0;
+    // // numbered by pages. for exampe { 1: [{"key" : "value"}], 2:["key": "value"], 3: []}
+    // const [pagesAnswers, setPagesAnswers] = useState({});
+    // function isEmpty(obj) {
+    //   return Object.keys(obj).length === 0;
+    // }
+    // const objec = isEmpty(pagesAnswers)
+    //   ? "empty"
+    //   : Object.values(pagesAnswers[Object.keys(pagesAnswers)[`${index}`]])[1];
+    // console.log("signup", pagesAnswers);
+    // console.log("signup", objec);
+    // const prevButton = () => {
+    //   if (index > 1) {
+    //     setIndex((prevIndex) => prevIndex - 1);
+    //   }
+    // };
+    // const test = () => {
+    //   return pagesAnswers;
+    // };
+    // const nextButton = () => {
+    //   if (index - 6) {
+    //     setIndex((prevIndex) => prevIndex + 1);
+    //   } else {
+    //     // clear the form on submit
+    //     setPagesAnswers({});
+    //     setSubmitted(true);
+    //   }
+    // };
+    // const onPageAnswerUpdate = (step, answersObj) => {
+    //   console.log("answersObj", answersObj);
+    //   setPagesAnswers({ ...pagesAnswers, [step]: answersObj });
+    // };
+    // const handleStart = () => {
+    //   setIndex(1);
+    //   setSubmitted(false);
+    // };
+    // {pagesAnswers[index - 1] == "3" && JSON.stringify(test())}
+    // <Row className="m-5">
+    //   <Col className="align-self-center">
+    //     <MultiStepProgressBar step={index} />
+    //   </Col>
+    // </Row>
+    // {submitted ? (
+    //   <p className="text-center">
+    //     Your have been successfuly registered!
+    //   </p>
+    // ) : (
+    //   <form>
+    //     <MultiStepForm
+    //       list={steps}
+    //       step={index}
+    //       onPageUpdate={onPageAnswerUpdate}
+    //       pagesAnswers={pagesAnswers}
+    //     />
+    //     <Button onClick={prevButton} disabled={index == 1}>Previous</Button>
+    //     <Button
+    //       onClick={nextButton}
+    //       className="w-100 mt-3"
+    //     >
+    //       {index == totalPagesCount ? "Submit" : "Next"}
+    //     </Button>
+    //     <Button
+    //       onClick={prevButton}
+    //       disabled={index == 1}
+    //       className="w-100 mt-3"
+    //     >
+    //       Previous
+    //     </Button>
+    //   </form>
+    // )}
+  }
+
+  {
+    /* 
+    
+    
+    
+    
+    return (
     <>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -251,16 +441,16 @@ export default function Signup() {
           id="user-style-default"
         />
       </Head>
-      <main class="main" id="top">
-        <div class="container-fluid px-0">
-          <div class="container">
-            <div class="row flex-center min-vh-100 py-5">
-              <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3">
+      <main className="main" id="top">
+        <div className="container-fluid px-0">
+          <div className="container">
+            <div className="row flex-center min-vh-100 py-5">
+              <div className="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3">
                 <Link
-                  class="d-flex flex-center text-decoration-none mb-4"
+                  className="d-flex flex-center text-decoration-none mb-4"
                   href="/"
                 >
-                  <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block">
+                  <div className="d-flex align-items-center fw-bolder fs-5 d-inline-block">
                     <img
                       src="assets/img/icons/logo.png"
                       alt="phoenix"
@@ -269,81 +459,81 @@ export default function Signup() {
                   </div>
                 </Link>
 
-                <div class="text-center mb-7">
-                  <h3 class="text-1000">サインアップ</h3>
-                  <p class="text-700">今すぐアカウントを作成してください</p>
+                <div className="text-center mb-7">
+                  <h3 className="text-1000">サインアップ</h3>
+                  <p className="text-700">今すぐアカウントを作成してください</p>
                 </div>
 
-                <div class="position-relative mt-4">
-                  <hr class="bg-200" />
+                <div className="position-relative mt-4">
+                  <hr className="bg-200" />
                 </div>
                 <form>
-                  <div class="mb-3 text-start">
-                    <label class="form-label" for="name">
+                  <div className="mb-3 text-start">
+                    <label className="form-label" for="name">
                       Name
                     </label>
                     <input
-                      class="form-control"
+                      className="form-control"
                       id="name"
                       type="text"
                       placeholder="Name"
                     />
                   </div>
-                  <div class="mb-3 text-start">
-                    <label class="form-label" for="email">
+                  <div className="mb-3 text-start">
+                    <label className="form-label" for="email">
                       Email address
                       
                     </label>
                     <input
-                      class="form-control"
+                      className="form-control"
                       id="email"
                       type="email"
                       placeholder="name@example.com"
                     />
                   </div>
-                  <div class="row g-3 mb-3">
-                    <div class="col-md-6">
-                      <label class="form-label" for="password">
+                  <div className="row g-3 mb-3">
+                    <div className="col-md-6">
+                      <label className="form-label" for="password">
                         Password
                       </label>
                       <input
-                        class="form-control form-icon-input"
+                        className="form-control form-icon-input"
                         id="password"
                         type="password"
                         placeholder="Password"
                       />
                     </div>
-                    <div class="col-md-6">
-                      <label class="form-label" for="confirmPassword">
+                    <div className="col-md-6">
+                      <label className="form-label" for="confirmPassword">
                         Confirm Password
                       </label>
                       <input
-                        class="form-control form-icon-input"
+                        className="form-control form-icon-input"
                         id="confirmPassword"
                         type="password"
                         placeholder="Confirm Password"
                       />
                     </div>
                   </div>
-                  <div class="form-check mb-3">
+                  <div className="form-check mb-3">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       id="termsService"
                       type="checkbox"
                     />
                     <label
-                      class="form-label fs--1 text-none"
+                      className="form-label fs--1 text-none"
                       for="termsService"
                     >
                       I accept the <a href="#!">terms </a>and{" "}
                       <a href="#!">privacy policy</a>
                     </label>
                   </div>
-                  <button class="btn btn-primary w-100 mb-3">
+                  <button className="btn btn-primary w-100 mb-3">
                     サインアップ
                   </button>
-                  <div class="text-center">
-                    <Link class="fs--1 fw-bold" href="/sign-in">
+                  <div className="text-center">
+                    <Link className="fs--1 fw-bold" href="/sign-in">
                       Sign in to an existing account
                     </Link>
                   </div>

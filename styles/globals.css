@@ -1,8 +1,9 @@
-.step {
+ .step {
   color: white;
   width: 35px;
   height: 35px;
   font-size: 18px;
+  font-weight:bold;
   background-color: indigo;
   border-radius: 50%;
   display: flex;
@@ -12,4 +13,16 @@
 
 .step.completed {
   background-color: indigo;
+} 
+.button__next{
+    background-color: indigo !important;
+    cursor:pointer!important;
+    font-size: 18px;
+    font-weight:bold;
+}
+.button__next:hover{
+    background-color: #ef9655  !important;;
+    color:indigo ;
+    
+    
 }

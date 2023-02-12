@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 export const FormItem = ({ item, onChange, answer }) => {
-  const [currentValue, setCurrentValue] = useState(answer || null);
+    const [currentValue, setCurrentValue] = useState(answer || null);
 
   const handleChange = (value) => {
     setCurrentValue(value);
     onChange(value, item.value);
-  };
-
+  }
+  
   switch (item.type) {
     case "text":
       return (
@@ -19,12 +19,15 @@ export const FormItem = ({ item, onChange, answer }) => {
             </label>
             <input
               class="form-control form-icon-input"
-              id="code"
+             
               type="text"
               placeholder="code"
-              onChange={(e) => onChange(e.target.value, item.value)}
+              onChange={(e) => handleChange(e.target.value, item.value)}
+              value={currentValue}
             />
+            
           </div>
+
           {/* <Form.Label>{item.label}</Form.Label>
           <Form.Control
             type="text"
@@ -76,6 +79,7 @@ export const FormItem = ({ item, onChange, answer }) => {
               placeholder="email"
               onChange={(e) => onChange(e.target.value, item.value)}
             />
+           
           </div>
 
           {/* <Form.Label htmlFor="inputPassword5">{item.label}</Form.Label>

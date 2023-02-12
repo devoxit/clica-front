@@ -15,7 +15,7 @@ export const steps = [
       {
         label: "Enter The Code",
         type: "text",
-        value: "code",
+        value: "phoneCode",
       },
     ],
   },
@@ -35,7 +35,7 @@ export const steps = [
       {
         label: "Enter The Code",
         type: "text",
-        value: "code",
+        value: "emailCode",
       },
     ],
   },
@@ -43,7 +43,7 @@ export const steps = [
     section: 5,
     items: [
       {
-        label: "Enter The Your Password",
+        label: "Enter Your Password",
         type: "text",
         value: "password",
       },

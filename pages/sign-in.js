@@ -1,7 +1,49 @@
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
+import { Button } from "react-bootstrap";
+import { Http } from "@/webservice/http.module";
 
+const http = new Http("13.208.124.247:8080/api/v1/auth", false);
+const errors = [
+  "Error sending phone number",
+  "Error verifying phone number",
+  "Error send email",
+  "Error verifying email",
+  "Error submitting data",
+];
 export default function Signin() {
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  console.log(success, error);
+
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await http.request("post", "/signin", {
+        email: email,
+        secret: password,
+      });
+      const result = response;
+      result.success && setSuccess(result.success);
+      setTimeout(() => {
+        router.push("/");
+      }, 5000);
+
+      setError();
+    } catch (err) {
+      setSuccess(result.success);
+      setError(err.message);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -46,16 +88,16 @@ export default function Signin() {
         />
       </Head>
 
-      <main class="main" id="top">
-        <div class="container-fluid px-0">
-          <div class="container">
-            <div class="row flex-center min-vh-100 py-5">
-              <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3">
+      <main className="main" id="top">
+        <div className="container-fluid px-0">
+          <div className="container">
+            <div className="row flex-center min-vh-100 py-5">
+              <div className="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3">
                 <a
-                  class="d-flex flex-center text-decoration-none mb-4"
+                  className="d-flex flex-center text-decoration-none mb-4"
                   href="../../../index.html"
                 >
-                  <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block">
+                  <div className="d-flex align-items-center fw-bolder fs-5 d-inline-block">
                     <img
                       src="../../../assets/img/icons/logo.png"
                       alt="phoenix"
@@ -63,69 +105,91 @@ export default function Signin() {
                     />
                   </div>
                 </a>
-                <div class="text-center mb-7">
-                  <h3 class="text-1000">サインイン</h3>
-                  <p class="text-700">Get access to your account</p>
+                <div className="text-center mb-7">
+                  <h3 className="text-1000">サインイン</h3>
+                  <p className="text-700">Get access to your account</p>
                 </div>
 
-                <div class="position-relative">
-                  <hr class="bg-200 mt-5 mb-4" />
-                  <div class="divider-content-center"></div>
+                <div className="position-relative">
+                  <hr className="bg-200 mt-5 mb-4" />
+                  <div className="divider-content-center"></div>
                 </div>
-                <div class="mb-3 text-start">
-                  <label class="form-label" for="email">
-                    Email address
-                  </label>
-                  <div class="form-icon-container">
-                    <input
-                      class="form-control form-icon-input"
-                      id="email"
-                      type="email"
-                      placeholder="name@example.com"
-                    />
-                    <span class="fas fa-user text-900 fs--1 form-icon"></span>
-                  </div>
-                </div>
-                <div class="mb-3 text-start">
-                  <label class="form-label" for="password">
-                    Password
-                  </label>
-                  <div class="form-icon-container">
-                    <input
-                      class="form-control form-icon-input"
-                      id="password"
-                      type="password"
-                      placeholder="Password"
-                    />
-                    <span class="fas fa-key text-900 fs--1 form-icon"></span>
-                  </div>
-                </div>
-                <div class="row flex-between-center mb-7">
-                  {/* <div class="col-auto">
-                    <div class="form-check mb-0">
-                      <input
-                        class="form-check-input"
-                        id="basic-checkbox"
-                        type="checkbox"
-                        checked="checked"
-                      />
-                      <label class="form-check-label mb-0" for="basic-checkbox">
-                        Remember me
-                      </label>
+                <div className="col-md-12">
+                  {success ? (
+                    <div className="success-page">
+                      <div className="text-center py-4">
+                        <h2 className="text-3xl font-bold mb-4 text-green-600">
+                          Login successful!
+                        </h2>
+                        <p>
+                          You will be redirected to the home page in 5 seconds.
+                        </p>
+                      </div>
+
+                      <style jsx>{`
+                        .success-page {
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;
+                        }
+                      `}</style>
                     </div>
-                  </div> */}
-                  <div class="col-auto">
-                    <Link class="fs--1 fw-bold" href="/forgot-password">
+                  ) : (
+                    <>
+
+                    <form onSubmit={handleSubmit}>
+                      <label className="form-label" htmlFor="email">
+                        Email{" "}
+                        {email == "" && <span style={{ color: "red" }}>*</span>}
+                      </label>
+                      <input
+                        className="form-control form-icon-input"
+                        type="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+
+                      <label className="form-label" htmlFor="password">
+                        Password{" "}
+                        {password == "" && (
+                          <span style={{ color: "red" }}>*</span>
+                        )}
+                      </label>
+                      <input
+                        className="form-control form-icon-input"
+                        type="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+
+                      <Button
+                        type="submit"
+                        className="w-100 mt-3 button__next"
+                        disabled={email === "" || password === ""}
+                      >
+                        Sign In
+                      </Button>
+                    </form>
+                <div className="row flex-between-center mb-7">
+                  <div className="col-auto">
+                    <Link className="fs--1 fw-bold" href="/forgot-password">
                       Forgot Password?
                     </Link>
                   </div>
                 </div>
-                <button class="btn btn-primary w-100 mb-3">Sign In</button>
-                <div class="text-center">
-                  <Link class="fs--1 fw-bold" href="/sign-up">
+                <div className="text-center">
+                  <Link className="fs--1 fw-bold" href="/sign-up">
                     Create an account
                   </Link>
                 </div>
+                    </>
+                  )}
+                </div>
+                
+              
               </div>
             </div>
           </div>

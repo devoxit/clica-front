@@ -27,7 +27,6 @@ export default function Signup() {
   const [emailCode, setEmailCode] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState("");
-
   const [error, setError] = useState("");
 
   console.log("success", success, "loading", isLoading);
@@ -42,7 +41,6 @@ export default function Signup() {
           });
           var result = response.data;
           setSuccess(result.success);
-
           setStep(2);
           break
 

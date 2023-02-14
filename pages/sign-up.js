@@ -15,27 +15,50 @@ const errors = [
   "Error submitting data",
 ];
 
+function UserInfo({ email, phone, password, onSubmit }) {
+  const [disabled, setDisabled] = useState(false);
 
- function UserInfo({ email, phone, password, onSubmit }) {
+  const handleClick = () => {
+    setDisabled(true);
+    onSubmit();
+  };
   return (
-    <div>
-      <p>Email: {email}</p>
-      <p>Phone: {phone}</p>
-      <p>Password: {password}</p>
-      <Button
-      onClick={onSubmit}
-      className="w-100 mt-3 button__next"
-      >
-      Confirm
-      </Button>
-     
+    <div
+      style={{
+        fontFamily: "Arial, sans-serif",
+        fontSize: "16px",
+        lineHeight: 1.5,
+        margin: "5px 30px",
+      }}
+    >
+      <p style={{ marginBottom: "10px" }}>
+        Email:{" "}
+        <span style={{ fontWeight: "bold", color: "indigo" }}>{email}</span>
+      </p>
+      <p style={{ marginBottom: "10px" }}>
+        Phone:{" "}
+        <span style={{ fontWeight: "bold", color: "indigo" }}>{phone}</span>
+      </p>
+      <p style={{ marginBottom: "10px" }}>
+        Password:{" "}
+        <span style={{ fontWeight: "bold", color: "indigo" }}>{password}</span>
+      </p>
+
+      <div className="d-flex justify-content-end">
+        <Button
+          disabled={disabled}
+          onClick={handleClick}
+          className="w-20 mt-3 text-right button__next"
+        >
+          Confirm
+        </Button>
+      </div>
     </div>
   );
 }
 
 export default function Signup() {
   const router = useRouter();
-
 
   const [isLoading, setLoading] = useState(false);
   const [step, setStep] = useState(1);
@@ -90,8 +113,6 @@ export default function Signup() {
 
           setStep(5);
           break;
-
-       
       }
     } catch (err) {
       // console.log(err)
@@ -109,10 +130,7 @@ export default function Signup() {
     }, 0);
     setSuccess(result.success);
     localStorage.removeItem("rg_t");
-
-   
   };
-
 
   return (
     <>
@@ -237,71 +255,76 @@ export default function Signup() {
                         >
                           Verify Phone
                         </Button>
-                        
                       </form>
                     </div>
                   )}
                   {step === 3 && (
                     <form onSubmit={handleSubmit}>
+                      <label class="form-label" htmlFor="email">
+                        Enter You Email
+                      </label>
                       <input
+                        class="form-control form-icon-input"
                         type="email"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                      />              
+                      />
                       <Button
-                          type="submit"
-                          className="w-100 mt-3 button__next"
-                          disabled={email === ""}
-                        >
-                          Send Email
-                        </Button>
+                        type="submit"
+                        className="w-100 mt-3 button__next"
+                        disabled={email === ""}
+                      >
+                        Send Email
+                      </Button>
                     </form>
                   )}
                   {step === 4 && (
                     <form onSubmit={handleSubmit}>
                       <input
+                        class="form-control form-icon-input"
                         type="text"
                         placeholder="Email code"
                         value={emailCode}
                         onChange={(e) => setEmailCode(e.target.value)}
                       />
-                      
+
                       <Button
-                          type="submit"
-                          className="w-100 mt-3 button__next"
-                          disabled={emailCode === ""}
-                        >
-                          Verify Phone
-                        </Button>
+                        type="submit"
+                        className="w-100 mt-3 button__next"
+                        disabled={emailCode === ""}
+                      >
+                        Verify Phone
+                      </Button>
                     </form>
                   )}
                   {step === 5 && (
-                    <form onSubmit={(e) => {
-                            e.preventDefault();
-                            setStep(6);
-                          }}>
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        setStep(6);
+                      }}
+                    >
                       <input
+                        class="form-control form-icon-input"
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
 
-                     <button type="submit">Send Password</button>
-                     <Button
-                          type="submit"
-                          className="w-100 mt-3 button__next"
-                          disabled={password === ""}
-                        >
-                          Send Password
-                        </Button>
-                       
+                      <Button
+                        type="submit"
+                        className="w-100 mt-3 button__next"
+                        disabled={password === ""}
+                      >
+                        Send Password
+                      </Button>
                     </form>
                   )}
-                  
-                  
-                    {success ? (<div className="success-page">
+
+                  {success ? (
+                    <div className="success-page">
                       <div className="text-center py-4">
                         <h2 className="text-3xl font-bold mb-4 text-green-600">
                           Registration successful!
@@ -319,19 +342,19 @@ export default function Signup() {
                           justify-content: center;
                         }
                       `}</style>
-                    </div>):(
-                      step === 6 && (<UserInfo
-                          email={email}
-                          phone={phone}
-                          password={"************"}
-                          onSubmit={handleConfirm}
-
-                           />)
-
+                    </div>
+                  ) : (
+                    step === 6 && (
+                      <UserInfo
+                        email={email}
+                        phone={phone}
+                        password={"************"}
+                        onSubmit={handleConfirm}
+                      />
                     )
-                   }
+                  )}
 
-                 {/* {error && <p style={{ color: "red" }}>{error}</p>} */}
+                  {/* {error && <p style={{ color: "red" }}>{error}</p>} */}
                 </div>
               </div>
             </div>

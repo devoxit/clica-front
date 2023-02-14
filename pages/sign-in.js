@@ -35,7 +35,7 @@ export default function Signin() {
       result.success && setSuccess(result.success);
       setTimeout(() => {
         router.push("/");
-      }, 5000);
+      }, 3000);
 
       setError();
     } catch (err) {

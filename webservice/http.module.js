@@ -69,7 +69,7 @@ export class Http {
                 return result
             }
         } catch (err) {
-            console.log(err)
+            
             this.errorHandler(err)
         }
     }

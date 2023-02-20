@@ -3,11 +3,12 @@ import Link from "next/link";
 import ListPosts from "@/components/Posts/ListPosts";
 import Layout from "@/components/Layout";
 import Footer from "@/components/Footer";
+import withAuth from '../auth/withAuth';
 
 
 
 
-export default function Home() {
+ function Home() {
  
   return (
     <>
@@ -59,12 +60,11 @@ export default function Home() {
         </Head>
 
         <div style={{ marginRight: 0 }} class="content ">
-          
           <div class="pb-9">
             <div class="row gy-3 gx-5 gx-xxl-6">
               <div class="col-12">
                 <div class="mb-9">
-                <ListPosts />
+                  <ListPosts />
                 </div>
                 <div class="text-center">
                   <a class="btn btn-link fs-0 p-0" href="#!">
@@ -80,3 +80,4 @@ export default function Home() {
     </>
   );
 }
+export default withAuth(Home);

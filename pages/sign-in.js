@@ -13,18 +13,24 @@ const errors = [
   "Error verifying email",
   "Error submitting data",
 ];
+
+
+
 export default function Signin() {
-  const [email, setEmail] = useState("");
-
-  const [password, setPassword] = useState("");
-  const [success, setSuccess] = useState("");
-  const [error, setError] = useState("");
-
-  console.log(success, error);
-
   const router = useRouter();
 
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  console.log(success,error);
+
+
   const handleSubmit = async (e) => {
+
+    
     e.preventDefault();
     try {
       const response = await http.request("post", "/signin", {
@@ -37,10 +43,10 @@ export default function Signin() {
         router.push("/");
       }, 3000);
 
-      setError();
+     
     } catch (err) {
-      setSuccess(result.success);
-      setError(err.message);
+     
+      setError(JSON.stringify(err));
     }
   };
 

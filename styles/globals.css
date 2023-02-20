@@ -26,3 +26,35 @@
     
     
 }
+
+
+ /*============= Spinner====================== */
+
+        .spinner {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          
+        }
+
+        .spinner:before {
+          content: "";
+          box-sizing: border-box;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 70px;
+          height: 70px;
+          margin-top: -25px;
+          margin-left: -25px;
+          border-radius: 50%;
+          border: 5px solid transparent;
+          border-top-color: indigo;
+          animation: spin 1s ease infinite;
+        }
+
+        @keyframes spin {
+          to {transform: rotate(360deg);}
+        }
+      

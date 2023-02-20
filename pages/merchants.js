@@ -5,7 +5,7 @@ import CardItem from "@/components/CardItem/CardItem";
 import Footer from "@/components/Footer";
 import withAuth from '../auth/withAuth';
 
- function Events() {
+ function Merchants() {
   return (
     <>
       <Layout>
@@ -27,15 +27,13 @@ import withAuth from '../auth/withAuth';
                
                 <div className="col-12">
                   <div className="row gx-3 gy-6 mb-8">
-                        <CardItem imageUrl="/assets/img/generic/34.png" linkUrl="/event" />
-                        <CardItem imageUrl="../../assets/img/generic/34.png" linkUrl="/event" />
-                        <CardItem imageUrl="../../assets/img/generic/34.png" linkUrl="/event" />
-                        <CardItem imageUrl="../../assets/img/generic/34.png" linkUrl="/event" />
-                        <CardItem imageUrl="../../assets/img/generic/34.png" linkUrl="/event" />
-                        <CardItem imageUrl="../../assets/img/generic/34.png" linkUrl="/event" />
-                        <CardItem imageUrl="../../assets/img/generic/34.png" linkUrl="/event" />
-                        <CardItem imageUrl="../../assets/img/generic/34.png" linkUrl="/event" />
-                        
+                        <CardItem imageUrl="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg" linkUrl="/shop"/>
+                        <CardItem imageUrl="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg" linkUrl="/shop"/>
+                        <CardItem imageUrl="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg" linkUrl="/shop"/>
+                        <CardItem imageUrl="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg" linkUrl="/shop"/>
+                        <CardItem imageUrl="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg" linkUrl="/shop"/>
+                        <CardItem imageUrl="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg" linkUrl="/shop"/>
+                       
                   </div>           
                 </div>
               </div>
@@ -48,5 +46,5 @@ import withAuth from '../auth/withAuth';
   );
 }
 
-export default withAuth(Events);
+export default withAuth(Merchants);
 

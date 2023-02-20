@@ -52,12 +52,12 @@ const CardItem = ({imageUrl,linkUrl}) => {
                               <p className="fs--1 text-700 mb-2">
                               Ichiwa, a family business, sells mochi (a Japanese rice cake) next to an old shrine in Kyoto.
                               </p>
-                              <div className="d-flex align-items-center mb-1">
+                              {/* <div className="d-flex align-items-center mb-1">
                                 <p className="me-2 text-900 text-decoration-line-through mb-0">
                                   $125.00
                                 </p>
                                 <h3 className="text-1100 mb-0">$89.00</h3>
-                              </div>
+                              </div> */}
                               
                             </div>
                           </div>

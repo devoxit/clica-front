@@ -18,9 +18,9 @@
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
     "next": "13.1.5",
-    "react": "18.0.0",
+    "react": "18.2.0",
     "react-bootstrap": "^2.7.0",
-    "react-dom": "18.0.0",
+    "react-dom": "18.2.0",
     "react-photo-album": "^2.0.0",
     "react-step-progress-bar": "^1.0.3",
     "react-toastify": "^9.1.1"

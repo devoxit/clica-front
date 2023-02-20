@@ -17,4 +17,4 @@ COPY . .
 
 EXPOSE 4200
 RUN npm run build
-CMD ["npm", "run", "start", "-p", "4200"]
+CMD ["npm", "run", "start"]

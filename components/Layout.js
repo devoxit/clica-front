@@ -1,12 +1,12 @@
-import { useEffect, useState} from 'react';import Head from "next/head";
+import { useEffect, useState } from 'react'; import Head from "next/head";
 import Script from "next/script";
 import Link from "next/link";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 
 const Layout = ({ children }) => {
- 
-  
+
+
   return (
     <>
       <Head>
@@ -77,12 +77,12 @@ const Layout = ({ children }) => {
           rel="stylesheet"
           id="user-style-default"
         />
-        
+
       </Head>
-   
+
       <main className="main" id="top">
         <div className="container-fluid px-0">
-          <Sidebar  />
+          <Sidebar />
           <Navbar />
 
           {children}

@@ -54,7 +54,7 @@ function Shop() {
                     <div class="row justify-content-xl-between">
                       <div class="col-auto">
                         <div class="d-flex flex-wrap mb-3 align-items-center">
-                          <h2 class="me-2"> 京都で創業1020年の餅屋。</h2>
+                          <h2 class="me-2"> 京都で創業1020年の餅屋</h2>
                           <span class="fw-semi-bold fs-1 text-1100">
                            
                           </span>
@@ -129,76 +129,59 @@ function Shop() {
                   </div>
                 </div>
 
-                <h2 className="mb-3">About this event</h2>
+                <h2 className="mb-3">About this shop</h2>
                 <p className="text-justify text-800 mb-6 mb-xxl-8">
-                  The Festival Season hopes to continue its rescheduled events
-                  in 2023 during the spring block. This will be a continuation
-                  of the tradition for the loyal fanbase to watch a jam-packed
-                  day full of exciting top-notch performances. With a unique
-                  lineup, you’ll know what to expect and get ready to embrace
-                  the festivity. Moreover, we’ve added a detailed list of the
-                  performers, with details of dates, lineups and prospective
-                  entry requirements. We will keep you posted with necessary
-                  updates regarding the event.
+                Ichiwa, a family business, sells mochi (a Japanese rice cake) next to an old shrine in Kyoto. The business was founded in the year 1000. That’s right. This tiny shop survived famines, earthquakes, wars, and changes in regime power. 
+
+The shop’s matriarch, Naomi Hasegawa, is one example of a quickly-fading sense of traditional leadership. Kenji Matsuoka, a professor emeritus of business at Ryukoku University in Kyoto, tells the New York Times that these kinds of businesses operate with entirely different goals and principles. Where modern organizations focus on growth, franchising, and scaling up, these businesses focus on being passed down to the next generation. It’s focused on creating a secure present, rather than gambling for the future. 
                 </p>
-                <h4 className="mb-3 fw-bold text-1000 fs-xxl-2">Singers:</h4>
-                <p>
-                  To join the festival, you’ll need to register through{" "}
-                  <a href="mailto:register@event.com">register@event.com</a>
-                  After confirming the payment, you’ll be provided with a unique
-                  ID number that you’ll need to show before the authority to get
-                  the tickets.
-                </p>
-                <p>
-                  The ID number will be unique to all members, so it’s requested
-                  that you don’t share it with anyone. Any damage regarding a
-                  misused ID will not be ours to compensate or refund.Enjoy!
-                </p>
+               
+              
                 <div className="row g-1 g-sm-2 mb-7 mb-xxl-8">
                   <div className="col-3">
                     <a
-                      href="../../assets/img/gallery/19.jpg"
+                      href="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg"
                       data-gallery="gallery-posts-undefined"
                     >
                       <img
                         className="rounded h-100 w-100 fit-cover"
-                        src="../../assets/img/gallery/19.jpg"
+                        src="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg"
                         alt="..."
                       />
                     </a>
                   </div>
                   <div className="col-3">
                     <a
-                      href="../../assets/img/gallery/20.jpg"
+                      href="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg"
                       data-gallery="gallery-posts-undefined"
                     >
                       <img
                         className="rounded h-100 w-100 fit-cover"
-                        src="../../assets/img/gallery/20.jpg"
+                        src="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg"
                         alt="..."
                       />
                     </a>
                   </div>
                   <div className="col-3">
                     <a
-                      href="../../assets/img/gallery/19.jpg"
+                      href="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg"
                       data-gallery="gallery-posts-undefined"
                     >
                       <img
                         className="rounded h-100 w-100 fit-cover"
-                        src="../../assets/img/gallery/19.jpg"
+                        src="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg"
                         alt="..."
                       />
                     </a>
                   </div>
                   <div className="col-3">
                     <a
-                      href="../../assets/img/gallery/20.jpg"
+                      href="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg"
                       data-gallery="gallery-posts-undefined"
                     >
                       <img
                         className="rounded h-100 w-100 fit-cover"
-                        src="../../assets/img/gallery/20.jpg"
+                        src="https://www.retorio.com/hubfs/hardik-pandya-9sz0RKcPAQw-unsplash.jpg"
                         alt="..."
                       />
                     </a>
@@ -217,20 +200,13 @@ function Shop() {
                   <li>Crypto Scams &amp; How To Identify Them</li>
                   <li>Is it Worth Buying To Keep?</li>
                 </ul>
-                <h4 className="mb-3 text-1000 fs-xxl-2">Refund Policy:</h4>
-                <ul className="mb-6 ps-4">
-                  <li>Contact the organizer to request a refund.</li>
-                  <li>Eventbrite's fee is nonrefundable.</li>
-                </ul>
+             
                 <h3 className="mb-3 fw-bold text-1000 fs-1 fs-xxl-2">
                   Responses:
                 </h3>
                 <div className="d-flex mb-6">
-                  <div className="me-3">
-                    <p className="mb-2 text-800">Going</p>
-                    <h3 className="text-800">4,569</h3>
-                  </div>
-                  <div className="my-3 mx-3 border-start"></div>
+                  
+                  
                   <div className="mx-3">
                     <p className="mb-2 text-800">Interested</p>
                     <h3 className="text-800">15,652</h3>
@@ -269,12 +245,12 @@ function Shop() {
                 </button>
               </div>
               <div className="col-xl-4">
-                <h3 className="mb-5 mb-xl-4">Organized by</h3>
+                <h3 className="mb-5 mb-xl-4">Owned by</h3>
                 <div className="row g-2 mb-6 align-items-center">
                   <div className="col-auto">
                     <img
                       className="rounded img-fluid"
-                      src="../../assets/img/brand2/b.png"
+                      src="https://img.freepik.com/premium-vector/draw-funny-kawaii-japan-tradition-sweet-mochi-vector-illustration-japanese-asian-traditional-food-cooking-menu-concept-doodle-cartoon-style_564312-840.jpg"
                       alt="..."
                       width="40"
                       height="40"
@@ -285,14 +261,10 @@ function Shop() {
                       className="mb-0 text-primary fw-semi-bold lh-sm"
                       href="#!"
                     >
-                      Bass Events, Inc.
+                      京都で創業1020年の餅屋
                     </a>
                   </div>
-                  <div className="col-sm-auto col-xl-12 col-xxl-auto">
-                    <button className="btn btn-link text-900 p-0" type="button">
-                      10k Followers{" "}
-                    </button>
-                  </div>
+                  
                   <div className="col-sm-auto">
                     <button
                       className="btn btn-phoenix-primary px-3"
@@ -338,183 +310,10 @@ function Shop() {
                     Greatest show on earth
                   </span>
                 </div>
-                <div className="row g-0 py-3 border-bottom border-dashed border-300 align-items-end justify-content-between">
-                  <div className="col-auto">
-                    <h3 className="flex-1 mb-0 text-nowrap me-3">
-                      Upcoming events
-                    </h3>
-                  </div>
-                  <div className="col-auto">
-                    <a className="fw-bold text-decoration-none fs--1" href="#!">
-                      See more
-                    </a>
-                  </div>
-                </div>
-                <div className="py-3 border-bottom border-dashed">
-                  <div className="d-flex flex-between-center">
-                    <p className="text-warning fs--2 mb-0 fw-bold mb-1">
-                      MON, FEB 21- MARCH 23
-                    </p>
-                    <div className="btn-reveal-trigger">
-                      <button
-                        className="btn btn-sm btn dropdown-toggle dropdown-caret-none transition-none btn-reveal"
-                        type="button"
-                        data-bs-toggle="dropdown"
-                        data-boundary="window"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        data-bs-reference="parent"
-                      >
-                        <span className="fas fa-ellipsis-h"></span>
-                      </button>
-                      <div className="dropdown-menu dropdown-menu-end py-2">
-                        <a className="dropdown-item" href="#!">
-                          Edit
-                        </a>
-                        <a className="dropdown-item text-danger" href="#!">
-                          Delete
-                        </a>
-                        <a className="dropdown-item" href="#!">
-                          Download
-                        </a>
-                        <a className="dropdown-item" href="#!">
-                          Report abuse
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <a
-                    className="hover-primary text-decoration-none text-1000 fw-bold mb-2 line-clamp-1 me-5 lh-base"
-                    href="#!"
-                  >
-                    Master Class on FILM Studies THESIS on Makers
-                  </a>
-                  <p className="text-800 fs--1 mb-2">
-                    Organized by <br />
-                    <a className="fw-bold text-primary" href="#!">
-                      IAFM- International Academy of Film and Media
-                    </a>
-                  </p>
-                  <p className="fs--2 text-600">64 people going</p>
-                  <p className="fs--1 text-700 fw-bold mb-1">
-                    <span className="fa-solid fa-clock text-800 me-1"></span>
-                    12.30PM - 10PM
-                  </p>
-                  <p className="fs--1 text-700 fw-bold mb-0">
-                    <span className="fa-solid fa-map-marker-alt text-800 me-1"></span>
-                    Tavern on the Greend, New York
-                  </p>
-                </div>
-                <div className="py-3 border-bottom border-dashed">
-                  <div className="d-flex flex-between-center">
-                    <p className="text-warning fs--2 mb-0 fw-bold mb-1">
-                      MON, FEB 21- MARCH 23
-                    </p>
-                    <div className="btn-reveal-trigger">
-                      <button
-                        className="btn btn-sm btn dropdown-toggle dropdown-caret-none transition-none btn-reveal"
-                        type="button"
-                        data-bs-toggle="dropdown"
-                        data-boundary="window"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        data-bs-reference="parent"
-                      >
-                        <span className="fas fa-ellipsis-h"></span>
-                      </button>
-                      <div className="dropdown-menu dropdown-menu-end py-2">
-                        <a className="dropdown-item" href="#!">
-                          Edit
-                        </a>
-                        <a className="dropdown-item text-danger" href="#!">
-                          Delete
-                        </a>
-                        <a className="dropdown-item" href="#!">
-                          Download
-                        </a>
-                        <a className="dropdown-item" href="#!">
-                          Report abuse
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <a
-                    className="hover-primary text-decoration-none text-1000 fw-bold mb-2 line-clamp-1 me-5 lh-base"
-                    href="#!"
-                  >
-                    Master Class on FILM Studies 'ANALYSIS of Cinema'
-                  </a>
-                  <p className="text-800 fs--1 mb-2">
-                    Organized by <br />
-                    <a className="fw-bold text-primary" href="#!">
-                      IAFM- International Academy of Film and Media
-                    </a>
-                  </p>
-                  <p className="fs--2 text-600">64 people going</p>
-                  <p className="fs--1 text-700 fw-bold mb-1">
-                    <span className="fa-solid fa-clock text-800 me-1"></span>
-                    12.30PM - 10PM
-                  </p>
-                  <p className="fs--1 text-700 fw-bold mb-0">
-                    <span className="fa-solid fa-map-marker-alt text-800 me-1"></span>
-                    Tavern on the Greend, New York
-                  </p>
-                </div>
-                <div className="py-3 border-bottom border-dashed">
-                  <div className="d-flex flex-between-center">
-                    <p className="text-warning fs--2 mb-0 fw-bold mb-1">
-                      MON, FEB 21- MARCH 23
-                    </p>
-                    <div className="btn-reveal-trigger">
-                      <button
-                        className="btn btn-sm btn dropdown-toggle dropdown-caret-none transition-none btn-reveal"
-                        type="button"
-                        data-bs-toggle="dropdown"
-                        data-boundary="window"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        data-bs-reference="parent"
-                      >
-                        <span className="fas fa-ellipsis-h"></span>
-                      </button>
-                      <div className="dropdown-menu dropdown-menu-end py-2">
-                        <a className="dropdown-item" href="#!">
-                          Edit
-                        </a>
-                        <a className="dropdown-item text-danger" href="#!">
-                          Delete
-                        </a>
-                        <a className="dropdown-item" href="#!">
-                          Download
-                        </a>
-                        <a className="dropdown-item" href="#!">
-                          Report abuse
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <a
-                    className="hover-primary text-decoration-none text-1000 fw-bold mb-2 line-clamp-1 me-5 lh-base"
-                    href="#!"
-                  >
-                    Witnessing History in Making Photographs
-                  </a>
-                  <p className="text-800 fs--1 mb-2">
-                    Organized by <br />
-                    <a className="fw-bold text-primary" href="#!">
-                      IAFM- International Academy of Film and Media
-                    </a>
-                  </p>
-                  <p className="fs--2 text-600">64 people going</p>
-                  <p className="fs--1 text-700 fw-bold mb-1">
-                    <span className="fa-solid fa-clock text-800 me-1"></span>
-                    12.30PM - 10PM
-                  </p>
-                  <p className="fs--1 text-700 fw-bold mb-0">
-                    <span className="fa-solid fa-map-marker-alt text-800 me-1"></span>
-                    Tavern on the Greend, New York
-                  </p>
-                </div>
+               
+              
+                
+              
               </div>
             </div>
           </div>

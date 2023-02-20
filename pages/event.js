@@ -1,26 +1,26 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";
-import withAuth from '../auth/withAuth';
+import withAuth from "../auth/withAuth";
 
 
 function Event() {
   return (
     <>
-    
-     
-         
+
+
+
 
       <Layout>
-      <div style={{marginRight: 0}} className="content">
+        <div style={{ marginRight: 0 }} className="content">
           <div className="pb-9">
-          <img className="rounded w-100 fit-cover mb-5 mb-md-6 mb-xl-8" src="../../assets/img/generic/34.png" alt="" style={{minHeight: "250px" }}/>
+            <img className="rounded w-100 fit-cover mb-5 mb-md-6 mb-xl-8" src="../../assets/img/generic/34.png" alt="" style={{ minHeight: "250px" }} />
             <div className="row gx-lg-9">
               <div className="col-xl-8 border-end-xl border-300">
                 <div className="card mb-9">
                   <div className="card-body">
                     <h1 className="lh-sm fs-2 fs-xxl-4 mb-2">Brandmyth presents- Shironamhin 25 years celebration with symphony orchestra</h1>
-                    <p className="fs-0 mb-4 text-600">Tavern on the Greend, New York</p>
+                    <p className="fs-0 mb-4 text-600">Tavern on the Greend&lsquo; New York</p>
                     <div className="card mb-5 mb-xxl-7">
                       <div className="card-body">
                         <div className="row gy-5">
@@ -32,7 +32,7 @@ function Event() {
                                   <h5 className="ms-2 text-1100 mb-0">Location</h5>
                                 </div>
                               </div>
-                              <p className="lh-sm mb-0 text-700">36/4A, James Tiberius Auditorium,<br />Vancouver, British Columbia, Canada </p>
+                              <p className="lh-sm mb-0 text-700">36/4A&lsquo; James Tiberius Auditorium&lsquo;<br />Vancouver&lsquo; British Columbia&lsquo; Canada </p>
                             </div>
                             <div className="my-4 mx-3 border-start d-none d-md-block"></div>
                           </div>
@@ -43,7 +43,7 @@ function Event() {
                                 <h5 className="ms-2 mb-0">Date &amp; Time</h5>
                               </div>
                             </div>
-                            <p className="lh-sm mb-0 text-700">28th June - 2nd July 2022,<br />10 am - 4 pm Eastern Daylight Time</p>
+                            <p className="lh-sm mb-0 text-700">28th June - 2nd July 2022&lsquo;<br />10 am - 4 pm Eastern Daylight Time</p>
                           </div>
                         </div>
                       </div>
@@ -64,12 +64,12 @@ function Event() {
                     </div>
                   </div>
                 </div>
-                
+
                 <h2 className="mb-3">About this event</h2>
-                <p className="text-justify text-800 mb-6 mb-xxl-8">The Festival Season hopes to continue its rescheduled events in 2023 during the spring block. This will be a continuation of the tradition for the loyal fanbase to watch a jam-packed day full of exciting top-notch performances. With a unique lineup, you’ll know what to expect and get ready to embrace the festivity. Moreover, we’ve added a detailed list of the performers, with details of dates, lineups and prospective entry requirements. We will keep you posted with necessary updates regarding the event.</p>
+                <p className="text-justify text-800 mb-6 mb-xxl-8">The Festival Season hopes to continue its rescheduled events in 2023 during the spring block. This will be a continuation of the tradition for the loyal fanbase to watch a jam-packed day full of exciting top-notch performances. With a unique lineup&lsquo; you’ll know what to expect and get ready to embrace the festivity. Moreover&lsquo; we’ve added a detailed list of the performers&lsquo; with details of dates&lsquo; lineups and prospective entry requirements. We will keep you posted with necessary updates regarding the event.</p>
                 <h4 className="mb-3 fw-bold text-1000 fs-xxl-2">Singers:</h4>
-                <p>To join the festival, you’ll need to register through <a href="mailto:register@event.com">register@event.com</a>After confirming the payment, you’ll be provided with a unique ID number that you’ll need to show before the authority to get the tickets.</p>
-                <p>The ID number will be unique to all members, so it’s requested that you don’t share it with anyone. Any damage regarding a misused ID will not be ours to compensate or refund.Enjoy!</p>
+                <p>To join the festival&lsquo; you’ll need to register through <a href="mailto:register@event.com">register@event.com</a>After confirming the payment&lsquo; you’ll be provided with a unique ID number that you’ll need to show before the authority to get the tickets.</p>
+                <p>The ID number will be unique to all members&lsquo; so it’s requested that you don’t share it with anyone. Any damage regarding a misused ID will not be ours to compensate or refund.Enjoy!</p>
                 <div className="row g-1 g-sm-2 mb-7 mb-xxl-8">
                   <div className="col-3"><a href="../../assets/img/gallery/19.jpg" data-gallery="gallery-posts-undefined"><img className="rounded h-100 w-100 fit-cover" src="../../assets/img/gallery/19.jpg" alt="..." /></a></div>
                   <div className="col-3"><a href="../../assets/img/gallery/20.jpg" data-gallery="gallery-posts-undefined"><img className="rounded h-100 w-100 fit-cover" src="../../assets/img/gallery/20.jpg" alt="..." /></a></div>
@@ -89,23 +89,23 @@ function Event() {
                 <h4 className="mb-3 text-1000 fs-xxl-2">Refund Policy:</h4>
                 <ul className="mb-6 ps-4">
                   <li>Contact the organizer to request a refund.</li>
-                  <li>Eventbrite's fee is nonrefundable.</li>
+                  <li>Eventbrite&apos;s fee is nonrefundable.</li>
                 </ul>
                 <h3 className="mb-3 fw-bold text-1000 fs-1 fs-xxl-2">Responses:</h3>
                 <div className="d-flex mb-6">
                   <div className="me-3">
                     <p className="mb-2 text-800">Going</p>
-                    <h3 className="text-800">4,569</h3>
+                    <h3 className="text-800">4&lsquo;569</h3>
                   </div>
                   <div className="my-3 mx-3 border-start"></div>
                   <div className="mx-3">
                     <p className="mb-2 text-800">Interested</p>
-                    <h3 className="text-800">15,652</h3>
+                    <h3 className="text-800">15&lsquo;652</h3>
                   </div>
                   <div className="my-3 mx-3 border-start"></div>
                   <div className="ms-3">
                     <p className="mb-2 text-800">Share</p>
-                    <h3 className="text-800">11,236</h3>
+                    <h3 className="text-800">11&lsquo;236</h3>
                   </div>
                 </div>
                 <h3 className="mb-3 fw-bold text-1000 fs-1">Share with Friends:</h3>
@@ -122,7 +122,7 @@ function Event() {
                 <h3 className="mb-5 mb-xl-4">Organized by</h3>
                 <div className="row g-2 mb-6 align-items-center">
                   <div className="col-auto"><img className="rounded img-fluid" src="../../assets/img/brand2/b.png" alt="..." width="40" height="40" /></div>
-                  <div className="col-sm-auto flex-1"><a className="mb-0 text-primary fw-semi-bold lh-sm" href="#!">Bass Events, Inc.</a></div>
+                  <div className="col-sm-auto flex-1"><a className="mb-0 text-primary fw-semi-bold lh-sm" href="#!">Bass Events&lsquo; Inc.</a></div>
                   <div className="col-sm-auto col-xl-12 col-xxl-auto">
                     <button className="btn btn-link text-900 p-0" type="button">10k Followers </button>
                   </div>
@@ -132,7 +132,7 @@ function Event() {
                 </div>
                 <div className="mb-8">
                   <h3 className="mb-5 mb-xl-4">Location </h3>
-                  {/* <div className="googlemap mb-3 mb-xl-4 location-map border" data-googlemap="data-googlemap" data-gmap="data-gmap" data-latlng="40.7228022,-74.0020158" data-scrollwheel="false" data-zoom="15">
+                  {/* <div className="googlemap mb-3 mb-xl-4 location-map border" data-googlemap="data-googlemap" data-gmap="data-gmap" data-latlng="40.7228022&lsquo;-74.0020158" data-scrollwheel="false" data-zoom="15">
                     <div className="marker-content py-3">
                       <h5>Google map </h5>
                       <p className="mb-0">A nice template for your site.<br />Customize it as you want.</p>
@@ -160,7 +160,7 @@ function Event() {
                 </div>
                 <div className="py-3 border-bottom border-dashed">
                   <div className="d-flex flex-between-center">
-                    <p className="text-warning fs--2 mb-0 fw-bold mb-1">MON, FEB 21- MARCH 23</p>
+                    <p className="text-warning fs--2 mb-0 fw-bold mb-1">MON&lsquo; FEB 21- MARCH 23</p>
                     <div className="btn-reveal-trigger">
                       <button className="btn btn-sm btn dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span className="fas fa-ellipsis-h"></span></button>
                       <div className="dropdown-menu dropdown-menu-end py-2"><a className="dropdown-item" href="#!">Edit</a><a className="dropdown-item text-danger" href="#!">Delete</a><a className="dropdown-item" href="#!">Download</a><a className="dropdown-item" href="#!">Report abuse</a></div>
@@ -169,24 +169,24 @@ function Event() {
                   <p className="text-800 fs--1 mb-2">Organized by <br /><a className="fw-bold text-primary" href="#!">IAFM- International Academy of Film and Media</a></p>
                   <p className="fs--2 text-600">64 people going</p>
                   <p className="fs--1 text-700 fw-bold mb-1"><span className="fa-solid fa-clock text-800 me-1"></span>12.30PM - 10PM</p>
-                  <p className="fs--1 text-700 fw-bold mb-0"><span className="fa-solid fa-map-marker-alt text-800 me-1"></span>Tavern on the Greend, New York</p>
+                  <p className="fs--1 text-700 fw-bold mb-0"><span className="fa-solid fa-map-marker-alt text-800 me-1"></span>Tavern on the Greend&lsquo; New York</p>
                 </div>
                 <div className="py-3 border-bottom border-dashed">
                   <div className="d-flex flex-between-center">
-                    <p className="text-warning fs--2 mb-0 fw-bold mb-1">MON, FEB 21- MARCH 23</p>
+                    <p className="text-warning fs--2 mb-0 fw-bold mb-1">MON&lsquo; FEB 21- MARCH 23</p>
                     <div className="btn-reveal-trigger">
                       <button className="btn btn-sm btn dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span className="fas fa-ellipsis-h"></span></button>
                       <div className="dropdown-menu dropdown-menu-end py-2"><a className="dropdown-item" href="#!">Edit</a><a className="dropdown-item text-danger" href="#!">Delete</a><a className="dropdown-item" href="#!">Download</a><a className="dropdown-item" href="#!">Report abuse</a></div>
                     </div>
-                  </div><a className="hover-primary text-decoration-none text-1000 fw-bold mb-2 line-clamp-1 me-5 lh-base" href="#!">Master Class on FILM Studies 'ANALYSIS of Cinema'</a>
+                  </div><a className="hover-primary text-decoration-none text-1000 fw-bold mb-2 line-clamp-1 me-5 lh-base" href="#!">Master Class on FILM Studies &apos;ANALYSIS of Cinema&apos;</a>
                   <p className="text-800 fs--1 mb-2">Organized by <br /><a className="fw-bold text-primary" href="#!">IAFM- International Academy of Film and Media</a></p>
                   <p className="fs--2 text-600">64 people going</p>
                   <p className="fs--1 text-700 fw-bold mb-1"><span className="fa-solid fa-clock text-800 me-1"></span>12.30PM - 10PM</p>
-                  <p className="fs--1 text-700 fw-bold mb-0"><span className="fa-solid fa-map-marker-alt text-800 me-1"></span>Tavern on the Greend, New York</p>
+                  <p className="fs--1 text-700 fw-bold mb-0"><span className="fa-solid fa-map-marker-alt text-800 me-1"></span>Tavern on the Greend&lsquo; New York</p>
                 </div>
                 <div className="py-3 border-bottom border-dashed">
                   <div className="d-flex flex-between-center">
-                    <p className="text-warning fs--2 mb-0 fw-bold mb-1">MON, FEB 21- MARCH 23</p>
+                    <p className="text-warning fs--2 mb-0 fw-bold mb-1">MON&lsquo; FEB 21- MARCH 23</p>
                     <div className="btn-reveal-trigger">
                       <button className="btn btn-sm btn dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span className="fas fa-ellipsis-h"></span></button>
                       <div className="dropdown-menu dropdown-menu-end py-2"><a className="dropdown-item" href="#!">Edit</a><a className="dropdown-item text-danger" href="#!">Delete</a><a className="dropdown-item" href="#!">Download</a><a className="dropdown-item" href="#!">Report abuse</a></div>
@@ -195,7 +195,7 @@ function Event() {
                   <p className="text-800 fs--1 mb-2">Organized by <br /><a className="fw-bold text-primary" href="#!">IAFM- International Academy of Film and Media</a></p>
                   <p className="fs--2 text-600">64 people going</p>
                   <p className="fs--1 text-700 fw-bold mb-1"><span className="fa-solid fa-clock text-800 me-1"></span>12.30PM - 10PM</p>
-                  <p className="fs--1 text-700 fw-bold mb-0"><span className="fa-solid fa-map-marker-alt text-800 me-1"></span>Tavern on the Greend, New York</p>
+                  <p className="fs--1 text-700 fw-bold mb-0"><span className="fa-solid fa-map-marker-alt text-800 me-1"></span>Tavern on the Greend&lsquo; New York</p>
                 </div>
               </div>
             </div>
@@ -211,8 +211,8 @@ function Event() {
             </div>
           </footer>
         </div>
-        </Layout>
-      
+      </Layout>
+
     </>
   );
 }

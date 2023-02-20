@@ -102,9 +102,9 @@ export default function Document() {
         <Script src="https://smtpjs.com/v3/smtp.js" />
         <Script src="/vendors/rater-js/index.js" />
         <Script src="/vendors/glightbox/glightbox.min.js" />
-        <script src="/vendors/popper/popper.min.js"></script>
-        <script src="/vendors/bootstrap/bootstrap.min.js"></script>
-       
+        <script async src="/vendors/popper/popper.min.js"></script>
+        <script async src="/vendors/bootstrap/bootstrap.min.js"></script>
+
       </Head>
       <body>
         <Main />

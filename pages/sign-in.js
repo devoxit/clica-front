@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { withTranslation } from "react-i18next";
-import LanguageSwitcher from '../components/SelectLanguage/LanguageSwitcher';
+import LanguageSwitcher from "../components/SelectLanguage/LanguageSwitcher";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -40,6 +40,9 @@ function Signin({ t }) {
       setError(JSON.stringify(err));
     }
   };
+  if (typeof document === "undefined") {
+    return null;
+  }
 
   return (
     <>

@@ -1,9 +1,9 @@
- .step {
+.step {
   color: white;
   width: 35px;
   height: 35px;
   font-size: 18px;
-  font-weight:bold;
+  font-weight: bold;
   background-color: indigo;
   border-radius: 50%;
   display: flex;
@@ -13,61 +13,55 @@
 
 .step.completed {
   background-color: indigo;
-} 
-.button__next{
-    background-color: indigo !important;
-    cursor:pointer!important;
-    font-size: 18px;
-    font-weight:bold;
 }
-.button__next:hover{
-    background-color: #ef9655  !important;;
-    color:indigo ;
-    
-    
+.button__next {
+  background-color: indigo !important;
+  cursor: pointer !important;
+  font-size: 18px;
+  font-weight: bold;
+}
+.button__next:hover {
+  background-color: #ef9655 !important;
+  color: indigo;
 }
 
+/*============= Spinner====================== */
 
- /*============= Spinner====================== */
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-        .spinner {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          
-        }
+.spinner:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  margin-top: -25px;
+  margin-left: -25px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  border-top-color: indigo;
+  animation: spin 1s ease infinite;
+}
 
-        .spinner:before {
-          content: "";
-          box-sizing: border-box;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 70px;
-          height: 70px;
-          margin-top: -25px;
-          margin-left: -25px;
-          border-radius: 50%;
-          border: 5px solid transparent;
-          border-top-color: indigo;
-          animation: spin 1s ease infinite;
-        }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-        @keyframes spin {
-          to {transform: rotate(360deg);}
-        }
-      
+/* ==================Multilanguage selector ============== */
 
- /* ==================Multilanguage selector ============== */
+.flag {
+  width: 20;
+  height: 20;
 
-         .flag {
-         
-          width: 20;
-          height:20;
-        
-          margin-left: 0.5rem;
-        
-        }
-         
-       
+  margin-left: 0.5rem;
+}
+

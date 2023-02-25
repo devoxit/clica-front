@@ -4,8 +4,9 @@ import Layout from "../components/Layout";
 import CardItem from "@/components/CardItem/CardItem";
 import Footer from "@/components/Footer";
 import withAuth from '../auth/withAuth';
+import { withTranslation } from 'react-i18next';
 
- function Merchants() {
+ function Merchants({t}) {
   return (
     <>
       <Layout>
@@ -24,6 +25,10 @@ import withAuth from '../auth/withAuth';
                 <span className="fa-solid fa-filter me-2"></span>Filter
               </button>
               <div className="row">
+              <div className="text-center mb-7">
+                  <h1 className="text-1000">{t("merchants")} </h1>
+                  
+                </div>
                
                 <div className="col-12">
                   <div className="row gx-3 gy-6 mb-8">
@@ -46,5 +51,5 @@ import withAuth from '../auth/withAuth';
   );
 }
 
-export default withAuth(Merchants);
+export default  withTranslation()(withAuth(Merchants));
 

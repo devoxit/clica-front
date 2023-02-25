@@ -1,11 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
+import { withTranslation } from 'react-i18next';
 
 
-const Sidebar = () => {
-
-
-
+const Sidebar = ({ t }) => {
 
   return (
     <>
@@ -39,6 +37,8 @@ const Sidebar = () => {
                       data-bs-parent="#navbarVerticalCollapse"
                       id="home"
                     >
+                     
+                      
                       <li className="collapsed-nav-item-title d-none">Home</li>
                       <li className="nav-item">
                         <Link
@@ -48,7 +48,9 @@ const Sidebar = () => {
                           aria-expanded="false"
                         >
                           <div className="d-flex align-items-center">
-                            <span className="nav-link-text">Merchants</span>
+                            <span className="nav-link-text">
+                              {t("merchants")}
+                            </span>
                           </div>
                         </Link>
                       </li>
@@ -60,9 +62,7 @@ const Sidebar = () => {
                           aria-expanded="false"
                         >
                           <div className="d-flex align-items-center">
-                            <span className="nav-link-text">
-                              Posts
-                            </span>
+                            <span className="nav-link-text">{t("posts")}</span>
                           </div>
                         </Link>
                       </li>
@@ -74,7 +74,7 @@ const Sidebar = () => {
                           aria-expanded="false"
                         >
                           <div className="d-flex align-items-center">
-                            <span className="nav-link-text">Events</span>
+                            <span className="nav-link-text">{t("events")}</span>
                           </div>
                         </Link>
                       </li>
@@ -499,12 +499,15 @@ const Sidebar = () => {
           </div>
         </div>
         <div class="navbar-vertical-footer">
-          <button class="btn navbar-vertical-toggle border-0 fw-semi-bold w-100 white-space-nowrap d-flex align-items-center"><span class="uil uil-left-arrow-to-left fs-0"></span><span class="uil uil-arrow-from-right fs-0"></span><span class="navbar-vertical-footer-text ms-2">Collapsed View</span></button>
+          <button class="btn navbar-vertical-toggle border-0 fw-semi-bold w-100 white-space-nowrap d-flex align-items-center">
+            <span class="uil uil-left-arrow-to-left fs-0"></span>
+            <span class="uil uil-arrow-from-right fs-0"></span>
+            <span class="navbar-vertical-footer-text ms-2">Collapsed View</span>
+          </button>
         </div>
-
       </nav>
     </>
   );
 };
 
-export default Sidebar;
+export default withTranslation()(Sidebar)

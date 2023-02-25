@@ -55,16 +55,14 @@ function Shop() {
                       <div class="col-auto">
                         <div class="d-flex flex-wrap mb-3 align-items-center">
                           <h2 class="me-2"> 京都で創業1020年の餅屋</h2>
-                          <span class="fw-semi-bold fs-1 text-1100">
-                           
-                          </span>
+                          <span class="fw-semi-bold fs-1 text-1100"></span>
                         </div>
-                       
+
                         <p class="fs-2 text-800">
-                          “Ichiwa, a family business, sells mochi (a Japanese rice cake) next to an old shrine in Kyoto.”
+                          “Ichiwa, a family business, sells mochi (a Japanese
+                          rice cake) next to an old shrine in Kyoto.”
                         </p>
                       </div>
-                     
                     </div>
                   </div>
                 </div>
@@ -72,13 +70,6 @@ function Shop() {
               <div className="col-xl-8 border-end-xl border-300">
                 <div className="card mb-9">
                   <div className="card-body">
-                    <h1 className="lh-sm fs-2 fs-xxl-4 mb-2">
-                      Brandmyth presents- Shironamhin 25 years celebration with
-                      symphony orchestra
-                    </h1>
-                    <p className="fs-0 mb-4 text-600">
-                      Tavern on the Greend, New York
-                    </p>
                     <div className="card mb-5 mb-xxl-7">
                       <div className="card-body">
                         <div className="row gy-5">
@@ -114,13 +105,13 @@ function Shop() {
                                     data-feather="clock"
                                   ></span>
                                 </div>
-                                <h5 className="ms-2 mb-0">Date &amp; Time</h5>
+                                <h5 className="ms-2 mb-0">Working time</h5>
                               </div>
                             </div>
                             <p className="lh-sm mb-0 text-700">
-                              28th June - 2nd July 2022,
+                              Open 7 days a week ,
                               <br />
-                              10 am - 4 pm Eastern Daylight Time
+                              10 am - 01 pm
                             </p>
                           </div>
                         </div>
@@ -131,12 +122,21 @@ function Shop() {
 
                 <h2 className="mb-3">About this shop</h2>
                 <p className="text-justify text-800 mb-6 mb-xxl-8">
-                Ichiwa, a family business, sells mochi (a Japanese rice cake) next to an old shrine in Kyoto. The business was founded in the year 1000. That’s right. This tiny shop survived famines, earthquakes, wars, and changes in regime power. 
-
-The shop’s matriarch, Naomi Hasegawa, is one example of a quickly-fading sense of traditional leadership. Kenji Matsuoka, a professor emeritus of business at Ryukoku University in Kyoto, tells the New York Times that these kinds of businesses operate with entirely different goals and principles. Where modern organizations focus on growth, franchising, and scaling up, these businesses focus on being passed down to the next generation. It’s focused on creating a secure present, rather than gambling for the future. 
+                  Ichiwa, a family business, sells mochi (a Japanese rice cake)
+                  next to an old shrine in Kyoto. The business was founded in
+                  the year 1000. That’s right. This tiny shop survived famines,
+                  earthquakes, wars, and changes in regime power. The shop’s
+                  matriarch, Naomi Hasegawa, is one example of a quickly-fading
+                  sense of traditional leadership. Kenji Matsuoka, a professor
+                  emeritus of business at Ryukoku University in Kyoto, tells the
+                  New York Times that these kinds of businesses operate with
+                  entirely different goals and principles. Where modern
+                  organizations focus on growth, franchising, and scaling up,
+                  these businesses focus on being passed down to the next
+                  generation. It’s focused on creating a secure present, rather
+                  than gambling for the future.
                 </p>
-               
-              
+
                 <div className="row g-1 g-sm-2 mb-7 mb-xxl-8">
                   <div className="col-3">
                     <a
@@ -200,13 +200,11 @@ The shop’s matriarch, Naomi Hasegawa, is one example of a quickly-fading sense
                   <li>Crypto Scams &amp; How To Identify Them</li>
                   <li>Is it Worth Buying To Keep?</li>
                 </ul>
-             
+
                 <h3 className="mb-3 fw-bold text-1000 fs-1 fs-xxl-2">
                   Responses:
                 </h3>
                 <div className="d-flex mb-6">
-                  
-                  
                   <div className="mx-3">
                     <p className="mb-2 text-800">Interested</p>
                     <h3 className="text-800">15,652</h3>
@@ -264,7 +262,7 @@ The shop’s matriarch, Naomi Hasegawa, is one example of a quickly-fading sense
                       京都で創業1020年の餅屋
                     </a>
                   </div>
-                  
+
                   <div className="col-sm-auto">
                     <button
                       className="btn btn-phoenix-primary px-3"
@@ -310,10 +308,6 @@ The shop’s matriarch, Naomi Hasegawa, is one example of a quickly-fading sense
                     Greatest show on earth
                   </span>
                 </div>
-               
-              
-                
-              
               </div>
             </div>
           </div>

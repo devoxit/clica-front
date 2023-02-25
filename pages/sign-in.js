@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { withTranslation } from "react-i18next";
+import LanguageSwitcher from '../components/SelectLanguage/LanguageSwitcher';
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -14,23 +16,15 @@ const errors = [
   "Error submitting data",
 ];
 
-
-
-export default function Signin() {
+function Signin({ t }) {
   const router = useRouter();
-
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  console.log(success,error);
-
-
   const handleSubmit = async (e) => {
-
-    
     e.preventDefault();
     try {
       const response = await http.request("post", "/signin", {
@@ -42,10 +36,7 @@ export default function Signin() {
       setTimeout(() => {
         router.push("/");
       }, 3000);
-
-     
     } catch (err) {
-     
       setError(JSON.stringify(err));
     }
   };
@@ -96,6 +87,7 @@ export default function Signin() {
 
       <main className="main" id="top">
         <div className="container-fluid px-0">
+          <LanguageSwitcher />
           <div className="container">
             <div className="row flex-center min-vh-100 py-5">
               <div className="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3">
@@ -112,7 +104,7 @@ export default function Signin() {
                   </div>
                 </a>
                 <div className="text-center mb-7">
-                  <h3 className="text-1000">サインイン</h3>
+                  <h3 className="text-1000">{t("signIn")} </h3>
                   <p className="text-700">Get access to your account</p>
                 </div>
 
@@ -143,59 +135,61 @@ export default function Signin() {
                     </div>
                   ) : (
                     <>
+                      <form onSubmit={handleSubmit}>
+                        <label className="form-label" htmlFor="email">
+                          Email{" "}
+                          {email == "" && (
+                            <span style={{ color: "red" }}>*</span>
+                          )}
+                        </label>
+                        <input
+                          className="form-control form-icon-input"
+                          type="email"
+                          placeholder="Enter your email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
 
-                    <form onSubmit={handleSubmit}>
-                      <label className="form-label" htmlFor="email">
-                        Email{" "}
-                        {email == "" && <span style={{ color: "red" }}>*</span>}
-                      </label>
-                      <input
-                        className="form-control form-icon-input"
-                        type="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
+                        <label className="form-label" htmlFor="password">
+                          Password{" "}
+                          {password == "" && (
+                            <span style={{ color: "red" }}>*</span>
+                          )}
+                        </label>
+                        <input
+                          className="form-control form-icon-input"
+                          type="password"
+                          placeholder="Enter your password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
 
-                      <label className="form-label" htmlFor="password">
-                        Password{" "}
-                        {password == "" && (
-                          <span style={{ color: "red" }}>*</span>
-                        )}
-                      </label>
-                      <input
-                        className="form-control form-icon-input"
-                        type="password"
-                        placeholder="Enter your password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-
-                      <Button
-                        type="submit"
-                        className="w-100 mt-3 button__next"
-                        disabled={email === "" || password === ""}
-                      >
-                        Sign In
-                      </Button>
-                    </form>
-                <div className="row flex-between-center mb-7">
-                  <div className="col-auto">
-                    <Link className="fs--1 fw-bold" href="/forgot-password">
-                      Forgot Password?
-                    </Link>
-                  </div>
-                </div>
-                <div className="text-center">
-                  <Link className="fs--1 fw-bold" href="/sign-up">
-                    Create an account
-                  </Link>
-                </div>
+                        <Button
+                          type="submit"
+                          className="w-100 mt-3 button__next"
+                          disabled={email === "" || password === ""}
+                        >
+                          Sign In
+                        </Button>
+                      </form>
+                      <div className="row flex-between-center mb-7">
+                        <div className="col-auto">
+                          <Link
+                            className="fs--1 fw-bold"
+                            href="/forgot-password"
+                          >
+                            Forgot Password?
+                          </Link>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <Link className="fs--1 fw-bold" href="/sign-up">
+                          Create an account
+                        </Link>
+                      </div>
                     </>
                   )}
                 </div>
-                
-              
               </div>
             </div>
           </div>
@@ -204,3 +198,5 @@ export default function Signin() {
     </>
   );
 }
+
+export default withTranslation()(Signin);

@@ -1,11 +1,15 @@
 import Head from "next/head";   
 import Link from "next/link";
+import i18n from '../i18n';
+import LanguageSwitcher from './SelectLanguage/LanguageSwitcher';
+import { withTranslation } from 'react-i18next';
 
 
 
 
 
-const Navbar = () => {
+
+const Navbar = ({t}) => {
 
   
 
@@ -29,6 +33,13 @@ const Navbar = () => {
                 </div>
               </a>
             </div>
+            
+           
+
+       
+         
+
+
             <div className="search-box navbar-top-search-box d-none d-lg-block" data-list='{"valueNames":["title"]}' style={{width:"25rem"}}>
               <form className="position-relative" data-bs-toggle="search" data-bs-display="static">
                 <input className="form-control search-input fuzzy-search rounded-pill form-control-sm" type="search" placeholder="Search..." aria-label="Search" />
@@ -36,6 +47,7 @@ const Navbar = () => {
 
               </form>
               <div className="btn-close position-absolute end-0 top-50 translate-middle cursor-pointer shadow-none" data-bs-dismiss="search">
+           
                 <button className="btn btn-link btn-close-falcon p-0" aria-label="Close"></button>
               </div>
               <div className="dropdown-menu border border-300 font-base start-0 py-0 overflow-hidden w-100">
@@ -161,14 +173,13 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
+           
             <ul className="navbar-nav navbar-nav-icons flex-row">
-              <li className="nav-item">
-                <div className="theme-control-toggle fa-icon-wait px-2">
-                  <input className="form-check-input ms-0 theme-control-toggle-input" type="checkbox" data-theme-control="phoenixTheme" value="dark" id="themeControlToggle" />
-                  <label className="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span className="icon" data-feather="moon"></span></label>
-                  <label className="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span className="icon" data-feather="sun"></span></label>
-                </div>
-              </li>
+            <li className="nav-item text-right">
+
+                <LanguageSwitcher />
+            </li>
+             
               <li className="nav-item dropdown">
                 <a className="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-auto-close="outside"><span data-feather="bell" style={{height:"20px",width:"20px"}}></span></a>
 
@@ -412,5 +423,5 @@ const Navbar = () => {
       }
       
   
-  export default Navbar;
+  export default withTranslation()(Navbar)
   

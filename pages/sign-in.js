@@ -5,7 +5,9 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
 import { Button } from "react-bootstrap";
+import withAuth from '../auth/withAuth';
 import { Http } from "@/webservice/http.module";
+
 
 const http = new Http("13.208.124.247:8080/api/v1/auth", false);
 const errors = [
@@ -202,4 +204,4 @@ function Signin({ t }) {
   );
 }
 
-export default withTranslation()(Signin);
+export default withTranslation()(withAuth(Signin))

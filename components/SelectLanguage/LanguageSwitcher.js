@@ -19,12 +19,15 @@ const LanguageSwitcher = () => {
     i18n.changeLanguage(option.value);
   };
   const customStyles = {
+    indicatorSeparator: () => ({ marginLeft: '20px'}),
+    dropdownIndicator: () => ({ display: 'none' }),
     control: (provided) => ({
       ...provided,
-      border: "2px solid rgba(75, 0, 130, 0.2)",
+      border: "none",
       boxShadow: "none",
       "&:hover": {
-        border: "2px solid rgba(75, 0, 130, 0.5)",
+        // border: "2px solid rgba(75, 0, 130, 0.5)",
+        border:"none",
         cursor: "pointer",
       },
       "&:focus": {
@@ -54,6 +57,7 @@ const LanguageSwitcher = () => {
     <Select
       className="language-selector"
       classNamePrefix="language-selector"
+      isSearchable={false}
       styles={customStyles}
       options={languageOptions}
       defaultValue={languageOptions.find(

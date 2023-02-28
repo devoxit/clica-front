@@ -1,29 +1,24 @@
 import { useState, useEffect } from "react";
 import ListComments from "../Comments/ListComments";
+import { formatDistanceToNow } from "date-fns";
+import axios from "axios";
 
 const Post = ({ post }) => {
-  const [user, setUser] = useState({});
   const [comments, setComments] = useState([]);
-
-  useEffect(() => {
-    const dataFetch = async () => {
-      const res = await fetch(`https://dummyjson.com/users/${post.userId}`);
-      const data = await res.json();
-      setUser(data);
-    };
-    dataFetch();
-  }, {});
-
-  useEffect(() => {
-    const commentsFetch = async () => {
-      const res = await fetch(
-        `https://dummyjson.com/posts/${post.id}/comments`
+  
+console.log(post)
+  const handleGetComments = async () => {
+    try {
+      const response = await axios.post(
+        "http://15.152.60.125:4500/api/v1/relation/comment/of/post",
+        { id: post._id }
       );
-      const data = await res.json();
-      setComments(data);
-    };
-    commentsFetch();
-  }, []);
+      setComments(response.data.data);
+      console.log(response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -35,8 +30,8 @@ const Post = ({ post }) => {
                 <img
                   className="rounded-circle border border-2 border-white"
                   //   src="../../assets/img/team/9.png"
-                  src={user.image}
-                  alt="alt"
+                  src={""}
+                  alt="user"
                 />
               </div>
               <div className="flex-1">
@@ -44,25 +39,24 @@ const Post = ({ post }) => {
                   className="fw-bold mb-0 text-decoration-none text-black"
                   href="#!"
                 >
-                  {user.firstName && user.lastName
-                    ? user.firstName + " " + user.lastName
-                    : "Loading ..."}
-                  {/* Erza Bridgest */}
+                  Erza Bridgest
                 </a>
                 <p className="fs--2 mb-0 text-600 fw-semi-bold">
-                  35 mins ago
+                {formatDistanceToNow(new Date(post.latest.updatedAt), {
+                  addSuffix: true,
+                })}
+                  
                   <span
                     className="fa-solid fa-circle text-300"
                     data-fa-transform="shrink-10 down-2"
                   ></span>
                   <br />
-                  {user.address
-                    ? `${user.address.city},  ${user.address.state}`
-                    : " loading .."}
-                  <span
+                  {post.latest.area[0]}
+                  {/* city, state */}
+                  {/* <span
                     className="fa-solid fa-circle text-300"
                     data-fa-transform="shrink-10 down-2"
-                  ></span>
+                  ></span> */}
                   <span className="fa-solid fa-earth-americas text-900"></span>
                 </p>
               </div>
@@ -96,7 +90,7 @@ const Post = ({ post }) => {
             </div>
             <p className="text-800">
               {/* Melancholy is sadness that has taken on lightness. */}
-              {post.body}
+              {post.latest.content}
             </p>
             <div className="row g-1 mb-5 border-bottom pb-4">
               <div className="col-3">
@@ -136,20 +130,21 @@ const Post = ({ post }) => {
                 </a>
               </div>
             </div>
-            <div className="d-flex">
+            <div className="d-flex justify-content-between align-items-center">
               <button
                 className="btn btn-link p-0 me-3 fs--2 fw-bolder"
                 type="button"
               >
                 <span className="fa-solid fa-heart me-1"></span>
-                {post.reactions > 0? post.reactions : "" } Likes
+                {post.reactions > 0 ? post.reactions : ""} Likes
               </button>
               <button
-                className="btn btn-link text-900 p-0 fs--2 me-3 fw-bolder"
+                className="btn btn-link text-900 p-0 fs--2 me-3 fw-bolder "
                 type="button"
+                onClick={handleGetComments}
               >
                 <span className="fa-solid fa-comment me-1"></span>
-                {comments.comments? comments.comments.length :  "loading ..." } Comments
+                {comments ? comments.length : null} Comments
               </button>
               {/* <button
                 className="btn btn-link text-900 p-0 fs--2 me-2 fw-bolder"
@@ -160,7 +155,7 @@ const Post = ({ post }) => {
             </div>
           </div>
 
-          <ListComments comments={comments.comments} image= {user.image} />
+          <ListComments comments={comments} />
         </div>
       </div>
     </>

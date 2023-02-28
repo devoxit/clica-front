@@ -14,21 +14,47 @@ const withAuth = (WrappedComponent) => {
       const refreshToken = localStorage.getItem("r_t");
 
       if (!accessToken || !refreshToken) {
-        
         router.push("/sign-in");
-        return;
+      } else if (router.pathname === "/sign-in") {
+        router.replace("/");
       }
 
       const timer = setTimeout(() => {
-        setLoading(false)
-      }, 1500)
-  
-      return () => clearTimeout(timer)
-      }, []);
+        setLoading(false);
+      }, 1500);
+
+      return () => clearTimeout(timer);
+    }, []);
 
     if (loading) {
-      return  <div className="spinner"></div>
-   
+      return (
+        <div class="spinner-container">
+          <div class="spinner">
+            <div
+              class="spinner-letter"
+              style={{ margin: "15px", color: "#ef9655" }}
+            >
+              L
+            </div>
+            <div class="spinner-letter">O</div>
+            <div class="spinner-c spinner-c-1" style={{ margin: "15px" }}>
+              C
+            </div>
+            <div class="spinner-letter">A</div>
+            <div class="spinner-c spinner-c-2" style={{ margin: "15px" }}>
+              C
+            </div>
+            <div class="spinner-letter">O</div>
+          </div>
+          <div class="progress-container">
+    <div class="progress">
+      <div class="progress-bar bg-gradient-indigo"></div>
+    </div>
+  </div>
+        </div>
+      );
+
+      // return  <div className="spinner"></div>
     }
 
     return <WrappedComponent {...props} />;

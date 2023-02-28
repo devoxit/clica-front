@@ -1,15 +1,22 @@
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
+
+
 import Layout from "../components/Layout";
 import withAuth from "../auth/withAuth";
+// import Map from "../components/Map"
+
+
 
 function Shop() {
+ 
   return (
     <>
       <Layout>
         <div style={{ marginRight: 0 }} className="content">
           <div className="pb-9">
-            <div className="row gx-lg-9">
+            <div className="row gx-lg-9" style={{ margin: "0 50px" }}>
               <div class="col-12 order-0">
                 <div class="card cover-image mb-5">
                   <div
@@ -88,6 +95,8 @@ function Shop() {
                                   </h5>
                                 </div>
                               </div>
+                            
+       
                               <p className="lh-sm mb-0 text-700">
                                 36/4A, James Tiberius Auditorium,
                                 <br />
@@ -235,12 +244,12 @@ function Shop() {
                     <span className="fa-brands fa-linkedin-in text-info"></span>
                   </button>
                 </div>
-                <button
+                {/* <button
                   className="btn btn-phoenix-primary w-100 mb-5 mb-xl-0"
                   type="button"
                 >
                   Load more
-                </button>
+                </button> */}
               </div>
               <div className="col-xl-4">
                 <h3 className="mb-5 mb-xl-4">Owned by</h3>
@@ -280,6 +289,7 @@ function Shop() {
                       <p className="mb-0">A nice template for your site.<br />Customize it as you want.</p>
                     </div>
                   </div> */}
+                 s {/* <Map/> */}
                   <div className="row flex-between-center g-0 gy-3">
                     <div className="col-12 col-sm-auto me-1">
                       <div className="d-flex">

@@ -177,7 +177,7 @@ const Navbar = ({t}) => {
             <ul className="navbar-nav navbar-nav-icons flex-row">
             <li className="nav-item text-right">
 
-                <LanguageSwitcher />
+                <LanguageSwitcher  /> <span>|</span>
             </li>
              
               <li className="nav-item dropdown">

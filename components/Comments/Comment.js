@@ -1,17 +1,10 @@
 import { useState, useEffect } from "react";
 import InputComment from "./InputComment";
 
-const Comment = ({ comment, image }) => {
-  const [user, setUser] = useState({});
+import { formatDistanceToNow } from "date-fns";
 
-  useEffect(() => {
-    const dataFetch = async () => {
-      const res = await fetch(`https://dummyjson.com/users/${comment.user.id}`);
-      const data = await res.json();
-      setUser(data);
-    };
-    dataFetch();
-  }, {});
+const Comment = ({ comment, image }) => {
+  const [user, setUser] = useState([]);
 
   return (
     <>
@@ -20,7 +13,7 @@ const Comment = ({ comment, image }) => {
           <div className="avatar avatar-m status-online me-3">
             <img
               className="rounded-circle"
-              src={user.image}
+              src={image}
               //   src="../../assets/img/team/30.png"
               alt="alt"
             />
@@ -31,17 +24,19 @@ const Comment = ({ comment, image }) => {
                 className="fw-bold mb-0 text-decoration-none text-black"
                 href="#!"
               >
-                {user.firstName && user.lastName
-                  ? user.firstName + " " + user.lastName
-                  : "Loading ..."}
+                Yassine Benzouine
               </a>
               <span className="text-600 fw-semi-bold fs--2 ms-2">
-                35 mins ago
+                {formatDistanceToNow(new Date(comment.updatedAt), {
+                  addSuffix: true,
+                })}
+              
               </span>
             </div>
             <p className="mb-0">
-              How long did it take to create this? It appears that you quickly
-              produced the second one.
+              {/* How long did it take to create this? It appears that you quickly
+              produced the second one. */}
+              {comment.value.comment}
             </p>
             <button
               className="btn btn-link p-0 text-900 text-decoration-none fw-bolder mb-2"
@@ -50,11 +45,11 @@ const Comment = ({ comment, image }) => {
               <span className="fa-solid fa-reply fs--2 me-1"></span>
               <span className="d-inline-block fw-bold fs--2">Reply</span>
             </button>
-            <div className="d-flex align-items-start ps-3 mb-3">
+            {/* <div className="d-flex align-items-start ps-3 mb-3">
               <div className="avatar avatar-m status-online me-3">
                 <img
                   className="rounded-circle"
-                  src={user.image}
+                  src={image}
                   //   src="../../assets/img/team/62.png"
                   alt="alt"
                 />
@@ -65,20 +60,20 @@ const Comment = ({ comment, image }) => {
                     className="fw-bold mb-0 text-decoration-none text-black"
                     href="#!"
                   >
-                    {user.firstName && user.lastName
-                      ? user.firstName + " " + user.lastName
-                      : "Loading ..."}
+                    
+                      Yassine Benzouine
+
                   </a>
                   <span className="text-600 fw-semi-bold fs--2 ms-2">
                     5 mins ago
                   </span>
                 </div>
-                <p className="mb-0">{comment.body}</p>
+                <p className="mb-0">{comment}</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
-        <InputComment image={image} />
+        <InputComment image={""} />
       </div>
     </>
   );

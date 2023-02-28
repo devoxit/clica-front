@@ -1,3 +1,4 @@
+import React, { useState,useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import ListPosts from "@/components/Posts/ListPosts";
@@ -8,7 +9,10 @@ import withAuth from '../auth/withAuth';
 
 
 
+
  function Home() {
+
+  
  
   return (
     <>
@@ -61,16 +65,16 @@ import withAuth from '../auth/withAuth';
 
         <div style={{ marginRight: 0 }} class="content ">
           <div class="pb-9">
-            <div class="row gy-3 gx-5 gx-xxl-6">
-              <div class="col-12">
+            <div class="row gy-3 gx-5 gx-xxl-6 flex-d justify-content-center">
+              <div class="col-md-8 col-10">
                 <div class="mb-9">
+               
+
+  
                   <ListPosts />
+                  
                 </div>
-                <div class="text-center">
-                  <a class="btn btn-link fs-0 p-0" href="#!">
-                    Load more
-                  </a>
-                </div>
+               
               </div>
             </div>
           </div>

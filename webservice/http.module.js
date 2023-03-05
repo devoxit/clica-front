@@ -29,7 +29,7 @@ export class Http {
         var baseURL = (secure ? "https://" : "http://") + endpoint
         this.#axios = axios.create({ baseURL, timeout })
         var tokenReqInterceptor = this.#axios.interceptors.request.use(tokenReqInterceptorFn, (err) => { console.log(err); Promise.reject(err) });
-        var tokenResInterceptor = this.#axios.interceptors.response.use(tokenResInterceptorFn, (err) => { console.log(err); Promise.reject(err) });
+        var tokenResInterceptor = this.#axios.interceptors.response.use(tokenResInterceptorFn, (err) => { console.log(err); return Promise.reject(err) });
         this.#interceptors = {
             request: { token: tokenReqInterceptor },
             response: { token: tokenResInterceptor }
@@ -51,7 +51,7 @@ export class Http {
                     ...config
                 })).data
                 if (result.error || !result.success) {
-                    console.log("+", result.success)
+                    console.log("+", result.err)
                     return this.errorHandler(result.err)
                 }
                 return result
@@ -63,14 +63,14 @@ export class Http {
                     signal: controller.signal,
                     ...config
                 }).data)
-                if (result.error || !result.success) {
-                    console.log("-", result.error)
+                if (result.err || !result.success) {
+                    console.log("-", result.err)
                     return this.errorHandler(result.err)
                 }
                 return result
             }
         } catch (err) {
-
+            console.log(err)
             this.errorHandler(err)
         }
     }
@@ -96,12 +96,13 @@ export class Http {
     }
 
     setResponseInterceptors(key, fn) {
-        this.#interceptors.request[key] = this.#axios.interceptors.request.use(fn, (err) => { console.log(err); Promise.reject(err) })
+        this.#interceptors.request[key] = this.#axios.interceptors.request.use(fn, (err) => { console.log(err); return Promise.reject(err) })
     }
 
     errorHandler(err) {
-        alert(JSON.stringify(err))
-        switch (err.id) {
+        alert(JSON.stringify(err.response.data))
+        var error = err.response.status
+        switch (error.err) {
             case "ea-004":
                 localStorage.removeItem('a_t')
                 localStorage.removeItem('r_t')

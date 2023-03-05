@@ -1,5 +1,6 @@
 import axios from "axios";
 import { crypt } from "@/utils/crypt";
+import { redirect } from 'next/navigation';
 
 const HEADERS = [
     {
@@ -69,7 +70,7 @@ export class Http {
                 return result
             }
         } catch (err) {
-            
+
             this.errorHandler(err)
         }
     }
@@ -99,7 +100,12 @@ export class Http {
     }
 
     errorHandler(err) {
-        switch (err) {
+        alert(JSON.stringify(err))
+        switch (err.id) {
+            case "ea-004":
+                localStorage.removeItem('a_t')
+                localStorage.removeItem('r_t')
+                redirect('/sign-in')
             default:
                 throw err
         }
